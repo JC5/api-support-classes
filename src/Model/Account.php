@@ -40,6 +40,8 @@ class Account
     public $number;
     /** @var string */
     public $bic;
+    /** @var string */
+    public $currencyCode;
 
     /**
      * Account constructor.
@@ -56,13 +58,14 @@ class Account
      */
     public static function fromArray(array $array): self
     {
-        $account         = new Account;
-        $account->id     = (int)$array['id'];
-        $account->name   = $array['attributes']['name'];
-        $account->type   = $array['attributes']['type'];
-        $account->iban   = $array['attributes']['iban'];
-        $account->number = $array['attributes']['account_number'];
-        $account->bic    = $array['attributes']['bic'];
+        $account               = new Account;
+        $account->id           = (int)$array['id'];
+        $account->name         = $array['attributes']['name'];
+        $account->type         = $array['attributes']['type'];
+        $account->iban         = $array['attributes']['iban'];
+        $account->number       = $array['attributes']['account_number'];
+        $account->bic          = $array['attributes']['bic'];
+        $account->currencyCode = $array['attributes']['currency_code'];
 
         return $account;
 
@@ -74,12 +77,13 @@ class Account
     public function toArray(): array
     {
         return [
-            'id'     => $this->id,
-            'name'   => $this->name,
-            'type'   => $this->type,
-            'iban'   => $this->iban,
-            'number' => $this->number,
-            'bic'    => $this->bic,
+            'id'            => $this->id,
+            'name'          => $this->name,
+            'type'          => $this->type,
+            'iban'          => $this->iban,
+            'number'        => $this->number,
+            'bic'           => $this->bic,
+            'currency_code' => $this->currencyCode,
         ];
     }
 
