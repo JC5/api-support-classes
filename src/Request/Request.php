@@ -131,7 +131,7 @@ abstract class Request
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body'       => json_encode((string)$this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
@@ -140,7 +140,7 @@ abstract class Request
         $res = $client->request('POST', $fullUri, $options);
 
         if (422 === $res->getStatusCode()) {
-            $body = $res->getBody();
+            $body = (string)$res->getBody();
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
             if (null === $json) {
@@ -153,7 +153,7 @@ abstract class Request
             throw new ApiException(sprintf('Status code is %d', $res->getStatusCode()));
         }
 
-        $body = $res->getBody();
+        $body = (string)$res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
@@ -191,7 +191,7 @@ abstract class Request
             throw new ApiException(sprintf('Status code is %d', $res->getStatusCode()));
         }
 
-        $body = $res->getBody();
+        $body = (string)$res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
