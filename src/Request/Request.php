@@ -122,7 +122,6 @@ abstract class Request
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
-
         $client  = $this->getClient();
         $options = [
             'headers'    => [
@@ -131,7 +130,7 @@ abstract class Request
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => json_encode((string)$this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body'       => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
