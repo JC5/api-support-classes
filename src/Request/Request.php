@@ -149,7 +149,7 @@ abstract class Request
             return $json;
         }
         if (200 !== $res->getStatusCode()) {
-            throw new ApiException(sprintf('Status code is %d', $res->getStatusCode()));
+            throw new ApiException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string)$res->getBody()));
         }
 
         $body = (string)$res->getBody();
