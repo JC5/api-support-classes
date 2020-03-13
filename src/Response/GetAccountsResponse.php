@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Response;
 
+use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Model\Account;
 use Countable;
 use Illuminate\Support\Collection;
@@ -60,8 +61,9 @@ class GetAccountsResponse extends Response implements Iterator, Countable
      * @link  https://php.net/manual/en/iterator.current.php
      * @return Account
      * @since 5.0.0
+     * @throws ApiException
      */
-    public function current(): Account
+    public function current(): ?Account
     {
         return $this->collection->get($this->position);
     }
