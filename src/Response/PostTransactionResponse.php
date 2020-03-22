@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * PostTransactionResponse.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -26,7 +27,7 @@ namespace GrumpyDictator\FFIIIApiSupport\Response;
 use GrumpyDictator\FFIIIApiSupport\Model\TransactionGroup;
 
 /**
- * Class PostTransactionResponse
+ * Class PostTransactionResponse.
  */
 class PostTransactionResponse extends Response
 {

@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * ApiHttpException.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -26,9 +27,8 @@ namespace GrumpyDictator\FFIIIApiSupport\Exceptions;
 use Exception;
 
 /**
- * Class ApiHttpException
+ * Class ApiHttpException.
  */
 class ApiHttpException extends Exception
 {
-
 }

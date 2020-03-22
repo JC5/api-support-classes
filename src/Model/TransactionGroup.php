@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * TransactionGroup.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,9 +24,8 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
-
 /**
- * Class TransactionGroup
+ * Class TransactionGroup.
  */
 class TransactionGroup
 {
@@ -44,11 +44,10 @@ class TransactionGroup
     public function __construct(array $data)
     {
         $this->transactions = [];
-        $this->id           = (int)$data['id'];
+        $this->id           = (int) $data['id'];
         $this->groupTitle   = $data['attributes']['group_title'];
         foreach ($data['attributes']['transactions'] as $transaction) {
             $this->transactions[] = new Transaction($transaction);
         }
     }
-
 }

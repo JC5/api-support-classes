@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Account.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class Account
+ * Class Account.
  */
 class Account
 {
@@ -48,7 +49,6 @@ class Account
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -58,8 +58,8 @@ class Account
      */
     public static function fromArray(array $array): self
     {
-        $account               = new Account;
-        $account->id           = (int)$array['id'];
+        $account               = new self;
+        $account->id           = (int) $array['id'];
         $account->name         = $array['attributes']['name'];
         $account->type         = $array['attributes']['type'];
         $account->iban         = $array['attributes']['iban'];
@@ -68,7 +68,6 @@ class Account
         $account->currencyCode = $array['attributes']['currency_code'];
 
         return $account;
-
     }
 
     /**
@@ -86,5 +85,4 @@ class Account
             'currency_code' => $this->currencyCode,
         ];
     }
-
 }
