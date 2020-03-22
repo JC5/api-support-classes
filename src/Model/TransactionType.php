@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * TransactionType.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class TransactionType
+ * Class TransactionType.
  */
 class TransactionType
 {
@@ -38,5 +39,4 @@ class TransactionType
     public const OPENING_BALANCE = 'opening balance';
     /** @var string */
     public const RECONCILIATION = 'reconciliation';
-
 }

@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * GetAccountRequest.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,7 +24,6 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetAccountResponse;
@@ -31,7 +31,7 @@ use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class GetAccountRequest
+ * Class GetAccountRequest.
  *
  * Returns a single account.
  */
@@ -39,7 +39,6 @@ class GetAccountRequest extends Request
 {
     /** @var int */
     private $id;
-
 
     /**
      * GetAccountsRequest constructor.
@@ -55,14 +54,14 @@ class GetAccountRequest extends Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     public function get(): Response
     {
         try {
             $data = $this->authenticatedGet();
-        } catch (ApiException|GuzzleException $e) {
+        } catch (ApiException | GuzzleException $e) {
             throw new ApiHttpException($e->getMessage());
         }
 

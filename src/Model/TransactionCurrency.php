@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * TransactionCurrency.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class TransactionCurrency
+ * Class TransactionCurrency.
  */
 class TransactionCurrency
 {
@@ -40,7 +41,6 @@ class TransactionCurrency
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -50,14 +50,12 @@ class TransactionCurrency
      */
     public static function fromArray(array $array): self
     {
-        $currency = new TransactionCurrency;
+        $currency = new self;
 
-        $currency->id   = (int)$array['id'];
+        $currency->id   = (int) $array['id'];
         $currency->name = $array['attributes']['name'];
         $currency->code = $array['attributes']['code'];
 
         return $currency;
-
     }
-
 }

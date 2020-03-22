@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Response.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Response;
 
 /**
- * Class Response
+ * Class Response.
  */
 abstract class Response
 {
@@ -34,5 +35,4 @@ abstract class Response
      * @param array $data
      */
     abstract public function __construct(array $data);
-
 }

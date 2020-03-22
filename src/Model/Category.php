@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Category.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class Category
+ * Class Category.
  */
 class Category
 {
@@ -38,7 +39,6 @@ class Category
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -48,13 +48,11 @@ class Category
      */
     public static function fromArray(array $array): self
     {
-        $category = new Category;
+        $category = new self;
 
-        $category->id   = (int)$array['id'];
+        $category->id   = (int) $array['id'];
         $category->name = $array['attributes']['name'];
 
         return $category;
-
     }
-
 }

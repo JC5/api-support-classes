@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * GetAccountsRequest.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,7 +24,6 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetAccountsResponse;
@@ -31,7 +31,7 @@ use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class GetAccountsRequest
+ * Class GetAccountsRequest.
  *
  * Returns all accounts, possibly limited by filter.
  */
@@ -39,15 +39,14 @@ class GetAccountsRequest extends Request
 {
     /** @var string */
     public const ASSET = 'asset';
-    /** @var string  */
+    /** @var string */
     public const LIABILITIES = 'liabilities';
 
-    /** @var string  */
+    /** @var string */
     public const ALL = 'all';
 
     /** @var string */
     private $type;
-
 
     /**
      * GetAccountsRequest constructor.
@@ -64,8 +63,8 @@ class GetAccountsRequest extends Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     public function get(): Response
     {
@@ -80,7 +79,7 @@ class GetAccountsRequest extends Request
             $this->setParameters($parameters);
             try {
                 $data = $this->authenticatedGet();
-            } catch (ApiException|GuzzleException $e) {
+            } catch (ApiException | GuzzleException $e) {
                 throw new ApiHttpException($e->getMessage());
             }
             $collectedRows[] = $data['data'];
@@ -94,6 +93,7 @@ class GetAccountsRequest extends Request
                 continue;
             }
         }
+
         return new GetAccountsResponse(array_merge(...$collectedRows));
     }
 
@@ -113,7 +113,6 @@ class GetAccountsRequest extends Request
         $this->type = $type;
         $this->setParameters(['type' => $type]);
     }
-
 
     /**
      * @return Response

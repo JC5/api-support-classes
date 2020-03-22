@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * PostTransactionRequest.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -22,7 +23,6 @@ declare(strict_types=1);
  */
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
-
 
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
@@ -59,17 +59,17 @@ class PostTransactionRequest extends Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     public function post(): Response
     {
         try {
             $data = $this->authenticatedPost();
-        } catch (ApiException|GuzzleException $e) {
+        } catch (ApiException | GuzzleException $e) {
             throw new ApiHttpException($e->getMessage());
         }
-        if(isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
+        if (isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
             return new ValidationErrorResponse($data['errors']);
         }
 

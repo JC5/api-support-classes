@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Budget.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class Budget
+ * Class Budget.
  */
 class Budget
 {
@@ -38,7 +39,6 @@ class Budget
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -48,13 +48,11 @@ class Budget
      */
     public static function fromArray(array $array): self
     {
-        $budget = new Budget;
+        $budget = new self;
 
-        $budget->id   = (int)$array['id'];
+        $budget->id   = (int) $array['id'];
         $budget->name = $array['attributes']['name'];
 
         return $budget;
-
     }
-
 }

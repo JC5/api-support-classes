@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * GetCurrenciesResponse.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,13 +24,13 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Response;
 
+use Countable;
 use GrumpyDictator\FFIIIApiSupport\Model\TransactionCurrency;
 use Illuminate\Support\Collection;
 use Iterator;
-use Countable;
 
 /**
- * Class GetCurrenciesResponse
+ * Class GetCurrenciesResponse.
  */
 class GetCurrenciesResponse extends Response implements Iterator, Countable
 {
@@ -55,7 +56,7 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
     }
 
     /**
-     * Return the current element
+     * Return the current element.
      *
      * @link  https://php.net/manual/en/iterator.current.php
      * @return TransactionCurrency
@@ -67,7 +68,7 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
     }
 
     /**
-     * Return the key of the current element
+     * Return the key of the current element.
      *
      * @link  https://php.net/manual/en/iterator.key.php
      * @return int
@@ -79,7 +80,7 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
     }
 
     /**
-     * Move forward to next element
+     * Move forward to next element.
      *
      * @link  https://php.net/manual/en/iterator.next.php
      * @return void Any returned value is ignored.
@@ -87,11 +88,11 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
      */
     public function next(): void
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**
-     * Rewind the Iterator to the first element
+     * Rewind the Iterator to the first element.
      *
      * @link  https://php.net/manual/en/iterator.rewind.php
      * @return void Any returned value is ignored.
@@ -103,10 +104,10 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
     }
 
     /**
-     * Checks if current position is valid
+     * Checks if current position is valid.
      *
      * @link  https://php.net/manual/en/iterator.valid.php
-     * @return boolean The return value will be casted to boolean and then evaluated.
+     * @return bool The return value will be casted to boolean and then evaluated.
      * Returns true on success or false on failure.
      * @since 5.0.0
      */
@@ -116,7 +117,7 @@ class GetCurrenciesResponse extends Response implements Iterator, Countable
     }
 
     /**
-     * Count elements of an object
+     * Count elements of an object.
      *
      * @link  https://php.net/manual/en/countable.count.php
      * @return int The custom count as an integer.

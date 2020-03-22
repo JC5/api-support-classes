@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * GetCurrenciesRequest.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,14 +24,14 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-
+use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
+use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetCurrenciesResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Exception\GuzzleException;
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
+
 /**
- * Class GetCurrenciesRequest
+ * Class GetCurrenciesRequest.
  */
 class GetCurrenciesRequest extends Request
 {
@@ -48,8 +49,8 @@ class GetCurrenciesRequest extends Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     public function get(): Response
     {
@@ -65,7 +66,7 @@ class GetCurrenciesRequest extends Request
 
             try {
                 $data = $this->authenticatedGet();
-            } catch (ApiException|GuzzleException $e) {
+            } catch (ApiException | GuzzleException $e) {
                 throw new ApiHttpException($e->getMessage());
             }
             $collectedRows[] = $data['data'];

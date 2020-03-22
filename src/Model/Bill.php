@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Bill.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class Bill
+ * Class Bill.
  */
 class Bill
 {
@@ -41,7 +42,6 @@ class Bill
      */
     protected function __construct()
     {
-
     }
 
     /**
@@ -51,14 +51,12 @@ class Bill
      */
     public static function fromArray(array $array): self
     {
-        $bill = new Bill;
+        $bill = new self;
 
-        $bill->id          = (int)$array['id'];
+        $bill->id          = (int) $array['id'];
         $bill->name        = $array['attributes']['name'];
         $bill->repeat_freq = $array['attributes']['repeat_freq'];
 
         return $bill;
-
     }
-
 }

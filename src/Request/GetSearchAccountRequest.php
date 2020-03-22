@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * GetSearchAccountRequest.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -30,7 +31,7 @@ use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class GetSearchAccountRequest
+ * Class GetSearchAccountRequest.
  */
 class GetSearchAccountRequest extends Request
 {
@@ -53,8 +54,8 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     public function get(): Response
     {
@@ -69,7 +70,7 @@ class GetSearchAccountRequest extends Request
             $this->setParameters($parameters);
             try {
                 $data = $this->authenticatedGet();
-            } catch (ApiException|GuzzleException $e) {
+            } catch (ApiException | GuzzleException $e) {
                 throw new ApiHttpException($e->getMessage());
             }
             $collectedRows[] = $data['data'];
@@ -83,6 +84,7 @@ class GetSearchAccountRequest extends Request
                 continue;
             }
         }
+
         return new GetAccountsResponse(array_merge(...$collectedRows));
     }
 
@@ -119,7 +121,6 @@ class GetSearchAccountRequest extends Request
         $this->field = $field;
         $this->setParameters(['query' => $this->getQuery(), 'field' => $field]);
     }
-
 
     /**
      * @return Response

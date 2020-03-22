@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * PreferenceResponse.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -23,11 +24,10 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Response;
 
-
 use GrumpyDictator\FFIIIApiSupport\Model\Preference;
 
 /**
- * Class PreferenceResponse
+ * Class PreferenceResponse.
  */
 class PreferenceResponse extends Response
 {
@@ -51,6 +51,4 @@ class PreferenceResponse extends Response
     {
         return $this->preference;
     }
-
-
 }

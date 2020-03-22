@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Transaction.php
- * Copyright (c) 2020 james@firefly-iii.org
+ * Copyright (c) 2020 james@firefly-iii.org.
  *
  * This file is part of the Firefly III CSV importer
  * (https://github.com/firefly-iii/csv-importer).
@@ -24,7 +25,7 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Model;
 
 /**
- * Class Transaction
+ * Class Transaction.
  */
 class Transaction
 {
@@ -44,6 +45,7 @@ class Transaction
     public $currencyId;
     /** @var int */
     public $currencyDecimalPlaces;
+
     /**
      * Transaction constructor.
      *
@@ -51,7 +53,7 @@ class Transaction
      */
     public function __construct(array $data)
     {
-        $this->id           = (int)$data['transaction_journal_id'];
+        $this->id           = (int) $data['transaction_journal_id'];
         $this->description  = $data['description'];
         $this->type         = $data['type'];
         $this->date         = $data['date'];
@@ -60,5 +62,4 @@ class Transaction
         $this->currencyId   = $data['currency_id'];
         $this->currencyDecimalPlaces= $data['currency_decimal_places'];
     }
-
 }
