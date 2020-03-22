@@ -36,9 +36,9 @@ use GuzzleHttp\Exception\GuzzleException;
 class GetSearchAccountRequest extends Request
 {
     /** @var string */
-    private $query;
-    /** @var string */
     private $field;
+    /** @var string */
+    private $query;
 
     /**
      * GetSearchAccountRequest constructor.
@@ -65,7 +65,7 @@ class GetSearchAccountRequest extends Request
         $page          = 1;
 
         while ($hasNextPage && $loopCount < 30) {
-            $parameters = $this->getParameters();
+            $parameters         = $this->getParameters();
             $parameters['page'] = $page;
             $this->setParameters($parameters);
             try {
@@ -91,23 +91,6 @@ class GetSearchAccountRequest extends Request
     /**
      * @return string
      */
-    public function getQuery(): ?string
-    {
-        return $this->query;
-    }
-
-    /**
-     * @param string $query
-     */
-    public function setQuery(string $query): void
-    {
-        $this->query = $query;
-        $this->setParameters(['query' => $query, 'field' => $this->getField()]);
-    }
-
-    /**
-     * @return string
-     */
     public function getField(): ?string
     {
         return $this->field;
@@ -120,6 +103,23 @@ class GetSearchAccountRequest extends Request
     {
         $this->field = $field;
         $this->setParameters(['query' => $this->getQuery(), 'field' => $field]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getQuery(): ?string
+    {
+        return $this->query;
+    }
+
+    /**
+     * @param string $query
+     */
+    public function setQuery(string $query): void
+    {
+        $this->query = $query;
+        $this->setParameters(['query' => $query, 'field' => $this->getField()]);
     }
 
     /**

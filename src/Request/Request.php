@@ -39,14 +39,36 @@ abstract class Request
     protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
     /** @var string */
     private $base;
+    /** @var array */
+    private $body;
+    /** @var array */
+    private $parameters;
     /** @var string */
     private $token;
     /** @var string */
     private $uri;
-    /** @var array */
-    private $parameters;
-    /** @var array */
-    private $body;
+
+    /**
+     * @throws ApiHttpException
+     * @return Response
+     */
+    abstract public function get(): Response;
+
+    /**
+     * @return mixed
+     */
+    public function getBase()
+    {
+        return $this->base;
+    }
+
+    /**
+     * @param mixed $base
+     */
+    public function setBase($base): void
+    {
+        $this->base = $base;
+    }
 
     /**
      * @return array
@@ -65,16 +87,12 @@ abstract class Request
     }
 
     /**
-     * @throws ApiHttpException
-     * @return Response
+     * @return string
      */
-    abstract public function get(): Response;
-
-    /**
-     * @throws ApiHttpException
-     * @return Response
-     */
-    abstract public function post(): Response;
+    public function getCacheKey(): string
+    {
+        return hash('sha256', sprintf('%s-%s-%s-%s', $this->base, $this->token, $this->uri, json_encode($this->parameters, JSON_THROW_ON_ERROR, 512)));
+    }
 
     /**
      * @return array
@@ -90,30 +108,6 @@ abstract class Request
     public function setParameters(array $parameters): void
     {
         $this->parameters = $parameters;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCacheKey(): string
-    {
-        return hash('sha256', sprintf('%s-%s-%s-%s', $this->base, $this->token, $this->uri, json_encode($this->parameters, JSON_THROW_ON_ERROR, 512)));
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getBase()
-    {
-        return $this->base;
-    }
-
-    /**
-     * @param mixed $base
-     */
-    public function setBase($base): void
-    {
-        $this->base = $base;
     }
 
     /**
@@ -147,6 +141,12 @@ abstract class Request
     {
         $this->uri = $uri;
     }
+
+    /**
+     * @throws ApiHttpException
+     * @return Response
+     */
+    abstract public function post(): Response;
 
     /**
      * @throws ApiException

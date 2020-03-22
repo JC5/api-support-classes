@@ -57,6 +57,21 @@ class GetAccountsResponse extends Response implements Iterator, Countable
     }
 
     /**
+     * Count elements of an object.
+     *
+     * @link  https://php.net/manual/en/countable.count.php
+     * @return int The custom count as an integer.
+     * </p>
+     * <p>
+     * The return value is cast to an integer.
+     * @since 5.1.0
+     */
+    public function count(): int
+    {
+        return $this->collection->count();
+    }
+
+    /**
      * Return the current element.
      *
      * @link  https://php.net/manual/en/iterator.current.php
@@ -116,20 +131,5 @@ class GetAccountsResponse extends Response implements Iterator, Countable
     public function valid(): bool
     {
         return $this->collection->has($this->position);
-    }
-
-    /**
-     * Count elements of an object.
-     *
-     * @link  https://php.net/manual/en/countable.count.php
-     * @return int The custom count as an integer.
-     * </p>
-     * <p>
-     * The return value is cast to an integer.
-     * @since 5.1.0
-     */
-    public function count(): int
-    {
-        return $this->collection->count();
     }
 }

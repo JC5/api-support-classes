@@ -69,19 +69,19 @@ class GetAccountRequest extends Request
     }
 
     /**
+     * @return Response
+     */
+    public function post(): Response
+    {
+        // TODO: Implement post() method.
+    }
+
+    /**
      * @param int $id
      */
     public function setId(int $id): void
     {
         $this->id = $id;
         $this->setUri(sprintf('accounts/%d', $id));
-    }
-
-    /**
-     * @return Response
-     */
-    public function post(): Response
-    {
-        // TODO: Implement post() method.
     }
 }

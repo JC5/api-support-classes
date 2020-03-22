@@ -32,6 +32,12 @@ class Transaction
     /** @var string */
     public $amount;
     /** @var string */
+    public $currencyCode;
+    /** @var int */
+    public $currencyDecimalPlaces;
+    /** @var int */
+    public $currencyId;
+    /** @var string */
     public $date;
     /** @var string */
     public $description;
@@ -39,12 +45,6 @@ class Transaction
     public $id;
     /** @var string */
     public $type;
-    /** @var string */
-    public $currencyCode;
-    /** @var int */
-    public $currencyId;
-    /** @var int */
-    public $currencyDecimalPlaces;
 
     /**
      * Transaction constructor.
@@ -53,13 +53,13 @@ class Transaction
      */
     public function __construct(array $data)
     {
-        $this->id           = (int) $data['transaction_journal_id'];
-        $this->description  = $data['description'];
-        $this->type         = $data['type'];
-        $this->date         = $data['date'];
-        $this->amount       = $data['amount'];
-        $this->currencyCode = $data['currency_code'];
-        $this->currencyId   = $data['currency_id'];
-        $this->currencyDecimalPlaces= $data['currency_decimal_places'];
+        $this->id                    = (int) $data['transaction_journal_id'];
+        $this->description           = $data['description'];
+        $this->type                  = $data['type'];
+        $this->date                  = $data['date'];
+        $this->amount                = $data['amount'];
+        $this->currencyCode          = $data['currency_code'];
+        $this->currencyId            = $data['currency_id'];
+        $this->currencyDecimalPlaces = $data['currency_decimal_places'];
     }
 }

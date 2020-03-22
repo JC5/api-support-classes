@@ -69,19 +69,19 @@ class GetCurrencyRequest extends Request
     }
 
     /**
+     * @return Response
+     */
+    public function post(): Response
+    {
+        // TODO: Implement post() method.
+    }
+
+    /**
      * @param string $code
      */
     public function setCode(string $code): void
     {
         $this->code = $code;
         $this->setUri(sprintf('currencies/%s', $code));
-    }
-
-    /**
-     * @return Response
-     */
-    public function post(): Response
-    {
-        // TODO: Implement post() method.
     }
 }
