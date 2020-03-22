@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
+use Exception;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
@@ -166,31 +167,32 @@ abstract class Request
     /**
      * @return array
      * @throws ApiException
-     * @throws GuzzleException
      */
     private function freshAuthenticatedGet(): array
     {
         $fullUri = sprintf('%s/api/v1/%s', $this->getBase(), $this->getUri());
-        $cacheKey = $this->getCacheKey();
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
 
         $client = $this->getClient();
-        $res    = $client->request(
-            'GET', $fullUri, [
-                     'headers' => [
-                         'Accept'        => 'application/json',
-                         'Authorization' => sprintf('Bearer %s', $this->getToken()),
-                     ],
-                 ]
-        );
-
+        try {
+            $res = $client->request(
+                'GET', $fullUri, [
+                         'headers' => [
+                             'Accept'        => 'application/json',
+                             'Authorization' => sprintf('Bearer %s', $this->getToken()),
+                         ],
+                     ]
+            );
+        } catch (Exception $e) {
+            throw new ApiException(sprintf('GuzzleException: %s', $e->getMessage()));
+        }
         if (200 !== $res->getStatusCode()) {
-            throw new ApiException(sprintf('Status code is %d', $res->getStatusCode()));
+            throw new ApiException(sprintf('Error accessing %s. Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string) $res->getBody()));
         }
 
-        $body = (string)$res->getBody();
+        $body = (string) $res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
