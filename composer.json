@@ -2,10 +2,6 @@
     "name": "firefly-iii/api-support-classes",
     "type": "library",
     "description": "API support classes",
-    "keywords": [
-        "firefly-iii",
-        "api-support-classes"
-    ],
     "homepage": "https://github.com/firefly-iii/api-support-classes",
     "license": "AGPL-3.0-or-later",
     "authors": [
@@ -15,6 +11,69 @@
             "homepage": "https://github.com/JC5",
             "role": "Developer"
         }
+    ],
+    "keywords": [
+        "firefly iii",
+        "firefly-iii",
+        "firefly",
+        "api",
+        "api support",
+        "import",
+        "importing",
+        "tool",
+        "finance",
+        "finances",
+        "manager",
+        "management",
+        "euro",
+        "dollar",
+        "laravel",
+        "money",
+        "currency",
+        "financials",
+        "financial",
+        "budgets",
+        "administration",
+        "tool",
+        "tooling",
+        "help",
+        "helper",
+        "assistant",
+        "planning",
+        "organizing",
+        "bills",
+        "personal finance",
+        "budgets",
+        "budgeting",
+        "budgeting tool",
+        "budgeting application",
+        "transactions",
+        "self hosted",
+        "self-hosted",
+        "transfers",
+        "management"
+    ],
+    "readme": "readme.md",
+    "support": {
+        "email": "thegrumpydictator@gmail.com",
+        "issues": "https://github.com/firefly-iii/firefly-iii/issues",
+        "forum": "https://reddit.com/r/FireflyIII",
+        "source": "https://github.com/firefly-iii/api-support-classes",
+        "docs": "https://docs.firefly-iii.org/"
+    },
+    "funding": [
+      {
+        "type": "patreon",
+        "url": "https://www.patreon.com/JC5"
+      },
+      {
+        "type": "github",
+        "url": "https://github.com/sponsors/JC5"
+      },
+      {
+        "type": "paypal",
+        "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=44UKUT455HUFA"
+      }
     ],
     "require": {
         "php": "^7.3",
