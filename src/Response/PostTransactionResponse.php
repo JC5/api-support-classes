@@ -34,6 +34,9 @@ class PostTransactionResponse extends Response
     /** @var TransactionGroup */
     private $transactionGroup;
 
+    /** @var array */
+    private $rawData;
+
     /**
      * Response constructor.
      *
@@ -41,7 +44,18 @@ class PostTransactionResponse extends Response
      */
     public function __construct(array $data)
     {
-        $this->transactionGroup = new TransactionGroup($data);
+        if (isset($data['id'])) {
+            $this->transactionGroup = new TransactionGroup($data);
+        }
+        $this->rawData = $data;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRawData(): array
+    {
+        return $this->rawData;
     }
 
     /**
