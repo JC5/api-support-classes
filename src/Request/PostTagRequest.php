@@ -27,7 +27,7 @@ class PostTagRequest extends Request
     {
         $this->setBase($url);
         $this->setToken($token);
-        $this->setUri('transactions');
+        $this->setUri('tags');
     }
 
     /**
