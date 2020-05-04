@@ -55,6 +55,12 @@ abstract class Request
     abstract public function get(): Response;
 
     /**
+     * @return Response
+     * @throws ApiHttpException
+     */
+    abstract public function put(): Response;
+
+    /**
      * @return mixed
      */
     public function getBase()

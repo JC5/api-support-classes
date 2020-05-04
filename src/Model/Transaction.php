@@ -45,6 +45,8 @@ class Transaction
     public $id;
     /** @var string */
     public $type;
+    /** @var tags */
+    public $tags;
 
     /**
      * Transaction constructor.
@@ -61,5 +63,6 @@ class Transaction
         $this->currencyCode          = $data['currency_code'];
         $this->currencyId            = $data['currency_id'];
         $this->currencyDecimalPlaces = $data['currency_decimal_places'];
+        $this->tags                  = $data['tags'] ?? [];
     }
 }

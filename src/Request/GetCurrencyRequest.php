@@ -75,7 +75,13 @@ class GetCurrencyRequest extends Request
     {
         // TODO: Implement post() method.
     }
-
+    /**
+     * @inheritDoc
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
+    }
     /**
      * @param string $code
      */

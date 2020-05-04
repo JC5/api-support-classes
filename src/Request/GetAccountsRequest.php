@@ -63,6 +63,15 @@ class GetAccountsRequest extends Request
     }
 
     /**
+     * @inheritDoc
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
+    }
+
+
+    /**
      * @throws ApiHttpException
      * @return Response
      */
