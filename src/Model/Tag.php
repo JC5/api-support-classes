@@ -31,8 +31,6 @@ class Tag
 {
     /** @var string */
     public $date;
-    /** @var string */
-    public $description;
     /** @var int */
     public $id;
     /** @var string */
@@ -46,7 +44,6 @@ class Tag
     public function __construct(array $data)
     {
         $this->id          = (int) $data['id'];
-        $this->description = $data['description'];
         $this->date        = $data['date'];
         $this->tag         = $data['tag'];
         exit;
