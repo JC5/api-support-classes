@@ -44,7 +44,7 @@ class PostTagResponse extends Response
     public function __construct(array $data)
     {
         if (isset($data['id'])) {
-            $this->tag = new Tag($data);
+            $this->tag = Tag::fromArray($data);
         }
         $this->rawData = $data;
     }

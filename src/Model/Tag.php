@@ -37,15 +37,25 @@ class Tag
     public $tag;
 
     /**
-     * TransactionGroup constructor.
-     *
-     * @param array $data
+     * Tag constructor.
      */
-    public function __construct(array $data)
+    protected function __construct()
     {
-        $this->id          = (int) $data['id'];
-        $this->date        = $data['date'];
-        $this->tag         = $data['tag'];
-        exit;
+
+    }
+
+    /**
+     * @param array $array
+     *
+     * @return static
+     */
+    public static function fromArray(array $array): self
+    {
+        $tag       = new self;
+        $tag->id   = (int) $array['id'];
+        $tag->date = $array['attributes']['date'];
+        $tag->tag  = $array['attributes']['tag'];
+
+        return $tag;
     }
 }
