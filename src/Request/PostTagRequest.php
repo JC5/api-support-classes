@@ -6,7 +6,7 @@ namespace GrumpyDictator\FFIIIApiSupport\Request;
 
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
-use GrumpyDictator\FFIIIApiSupport\Response\PostTransactionResponse;
+use GrumpyDictator\FFIIIApiSupport\Response\PostTagResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GrumpyDictator\FFIIIApiSupport\Response\ValidationErrorResponse;
 use GuzzleHttp\Exception\GuzzleException;
