@@ -86,13 +86,15 @@ class GetCurrenciesRequest extends Request
 
         return new GetCurrenciesResponse(array_merge(...$collectedRows));
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @return Response
      */

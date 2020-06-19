@@ -86,13 +86,15 @@ class GetPreferenceRequest extends Request
         $this->name = $name;
         $this->setUri(sprintf('preferences/%s', $name));
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @return Response
      */

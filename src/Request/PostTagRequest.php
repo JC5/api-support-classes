@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
@@ -12,11 +12,10 @@ use GrumpyDictator\FFIIIApiSupport\Response\ValidationErrorResponse;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class PostTagRequest
+ * Class PostTagRequest.
  */
 class PostTagRequest extends Request
 {
-
     /**
      * PostTagRequest constructor.
      *
@@ -33,7 +32,7 @@ class PostTagRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get(): Response
     {
@@ -41,7 +40,7 @@ class PostTagRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
@@ -49,7 +48,7 @@ class PostTagRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function post(): Response
     {

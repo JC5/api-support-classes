@@ -49,13 +49,15 @@ class GetBillsRequest extends Request
         $this->setToken($token);
         $this->setUri('bills');
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @throws ApiHttpException
      * @return Response

@@ -123,13 +123,15 @@ class GetSearchAccountRequest extends Request
         $this->query = $query;
         $this->setParameters(['query' => $query, 'field' => $this->getField()]);
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @return Response
      */

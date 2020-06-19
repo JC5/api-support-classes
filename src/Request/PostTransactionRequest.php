@@ -77,8 +77,9 @@ class PostTransactionRequest extends Request
 
         return new PostTransactionResponse($data['data']);
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {

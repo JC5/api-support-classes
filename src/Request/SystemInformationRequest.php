@@ -73,8 +73,9 @@ class SystemInformationRequest extends Request
     {
         // TODO: Implement post() method.
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {

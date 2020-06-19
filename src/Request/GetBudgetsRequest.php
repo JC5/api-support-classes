@@ -85,8 +85,9 @@ class GetBudgetsRequest extends Request
 
         return new GetBudgetsResponse(array_merge(...$collectedRows));
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {

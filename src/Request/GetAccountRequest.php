@@ -56,7 +56,7 @@ class GetAccountRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
