@@ -41,9 +41,11 @@ class SystemInformationRequest extends Request
      *
      * @param string $url
      * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        parent::__construct($trustedCertPath);
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('about');

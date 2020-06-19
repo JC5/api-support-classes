@@ -47,6 +47,17 @@ abstract class Request
     private $token;
     /** @var string */
     private $uri;
+    /** @var string */
+    private $trustedCertPath;
+
+    /**
+     * Request constructor.
+     * @param string $trustedCertPath path to trusted self signed certificate. Supply null to use system certificates.
+     */
+    public function __construct(string $trustedCertPath)
+    {
+        $this->trustedCertPath = $trustedCertPath;
+    }
 
     /**
      * @return Response
@@ -177,15 +188,15 @@ abstract class Request
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
-        $client  = $this->getClient();
+        $client = $this->getClient();
         $options = [
-            'headers'    => [
-                'Accept'        => 'application/json',
-                'Content-Type'  => 'application/json',
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body' => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
@@ -228,15 +239,15 @@ abstract class Request
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
-        $client  = $this->getClient();
+        $client = $this->getClient();
         $options = [
-            'headers'    => [
-                'Accept'        => 'application/json',
-                'Content-Type'  => 'application/json',
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body' => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
@@ -283,12 +294,12 @@ abstract class Request
         try {
             $res = $client->request(
                 'GET', $fullUri, [
-                         'headers' => [
-                             'Accept'        => 'application/json',
-                             'Content-Type'  => 'application/json',
-                             'Authorization' => sprintf('Bearer %s', $this->getToken()),
-                         ],
-                     ]
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json',
+                        'Authorization' => sprintf('Bearer %s', $this->getToken()),
+                    ],
+                ]
             );
         } catch (Exception $e) {
             throw new ApiException(sprintf('GuzzleException: %s', $e->getMessage()));
@@ -313,7 +324,8 @@ abstract class Request
     private function getClient(): Client
     {
         // config here
-
-        return new Client;
+        return new Client(array (
+            'verify' => ($this->trustedCertPath !== null) ? $this->trustedCertPath : true
+        ));
     }
 }

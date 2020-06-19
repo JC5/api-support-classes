@@ -53,7 +53,7 @@
         "transfers",
         "management"
     ],
-    "readme": "readme.md",
+    "readme": "README.md",
     "support": {
         "email": "thegrumpydictator@gmail.com",
         "issues": "https://github.com/firefly-iii/firefly-iii/issues",
