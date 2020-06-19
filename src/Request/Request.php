@@ -191,8 +191,8 @@ abstract class Request
         $client = $this->getClient();
         $options = [
             'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
@@ -242,8 +242,8 @@ abstract class Request
         $client = $this->getClient();
         $options = [
             'headers' => [
-                'Accept' => 'application/json',
-                'Content-Type' => 'application/json',
+                'Accept'        => 'application/json',
+                'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
@@ -295,8 +295,8 @@ abstract class Request
             $res = $client->request(
                 'GET', $fullUri, [
                     'headers' => [
-                        'Accept' => 'application/json',
-                        'Content-Type' => 'application/json',
+                        'Accept'        => 'application/json',
+                        'Content-Type'  => 'application/json',
                         'Authorization' => sprintf('Bearer %s', $this->getToken()),
                     ],
                 ]
