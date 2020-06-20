@@ -37,6 +37,8 @@ use GuzzleHttp\Exception\GuzzleException;
 abstract class Request
 {
     protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
+    /** @var string|null path to trusted self signed certificate. Supply null to use system certificates. */
+    protected $trustedCertPath = null;
     /** @var string */
     private $base;
     /** @var array */
@@ -47,8 +49,6 @@ abstract class Request
     private $token;
     /** @var string */
     private $uri;
-    /** @var string|null path to trusted self signed certificate. Supply null to use system certificates. */
-    protected $trustedCertPath = null;
 
     /**
      * @throws ApiHttpException
