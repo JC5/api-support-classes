@@ -49,6 +49,26 @@ abstract class Request
     private $token;
     /** @var string */
     private $uri;
+    /** @var bool|string */
+    private $verify = true;
+    /** @var float */
+    private $timeOut = 3.14;
+
+    /**
+     * @param bool|string $verify
+     */
+    public function setVerify($verify): void
+    {
+        $this->verify = $verify;
+    }
+
+    /**
+     * @param float $timeOut
+     */
+    public function setTimeOut(float $timeOut): void
+    {
+        $this->timeOut = $timeOut;
+    }
 
     /**
      * @throws ApiHttpException
@@ -315,8 +335,11 @@ abstract class Request
     private function getClient(): Client
     {
         // config here
-        return new Client([
-            'verify' => (null !== $this->trustedCertPath) ? $this->trustedCertPath : true,
-        ]);
+        return new Client(
+            [
+                'verify'          => $this->verify,
+                'connect_timeout' => $this->timeOut,
+            ]
+        );
     }
 }
