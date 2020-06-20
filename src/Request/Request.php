@@ -47,17 +47,8 @@ abstract class Request
     private $token;
     /** @var string */
     private $uri;
-    /** @var string */
-    private $trustedCertPath;
-
-    /**
-     * Request constructor.
-     * @param string $trustedCertPath path to trusted self signed certificate. Supply null to use system certificates.
-     */
-    public function __construct(string $trustedCertPath)
-    {
-        $this->trustedCertPath = $trustedCertPath;
-    }
+    /** @var string|null path to trusted self signed certificate. Supply null to use system certificates. */
+    protected $trustedCertPath = null;
 
     /**
      * @throws ApiHttpException

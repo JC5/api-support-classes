@@ -25,7 +25,7 @@ class PostTagRequest extends Request
      */
     public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
-        parent::__construct($trustedCertPath);
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('tags');

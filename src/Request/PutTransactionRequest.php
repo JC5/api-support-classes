@@ -28,7 +28,7 @@ class PutTransactionRequest extends Request
      */
     public function __construct(string $url, string $token, int $groupId, string $trustedCertPath = null)
     {
-        parent::__construct($trustedCertPath);
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri(sprintf('transactions/%d', $groupId));
