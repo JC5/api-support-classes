@@ -45,9 +45,11 @@ class GetSearchAccountRequest extends Request
      *
      * @param string $url
      * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('search/accounts');
@@ -121,13 +123,15 @@ class GetSearchAccountRequest extends Request
         $this->query = $query;
         $this->setParameters(['query' => $query, 'field' => $this->getField()]);
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @return Response
      */

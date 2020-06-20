@@ -37,9 +37,13 @@ class GetBudgetsRequest extends Request
 {
     /**
      * GetBudgetsRequest constructor.
+     * @param string $url
+     * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('budgets');
@@ -81,8 +85,9 @@ class GetBudgetsRequest extends Request
 
         return new GetBudgetsResponse(array_merge(...$collectedRows));
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {

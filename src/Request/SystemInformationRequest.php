@@ -41,9 +41,11 @@ class SystemInformationRequest extends Request
      *
      * @param string $url
      * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('about');
@@ -71,8 +73,9 @@ class SystemInformationRequest extends Request
     {
         // TODO: Implement post() method.
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {

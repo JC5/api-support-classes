@@ -1,9 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace GrumpyDictator\FFIIIApiSupport\Request;
-
 
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
@@ -12,7 +11,7 @@ use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class PutTransactionRequest
+ * Class PutTransactionRequest.
  */
 class PutTransactionRequest extends Request
 {
@@ -25,9 +24,11 @@ class PutTransactionRequest extends Request
      * @param string $url
      * @param string $token
      * @param int    $groupId
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token, int $groupId)
+    public function __construct(string $url, string $token, int $groupId, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri(sprintf('transactions/%d', $groupId));
@@ -35,7 +36,7 @@ class PutTransactionRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get(): Response
     {
@@ -43,7 +44,7 @@ class PutTransactionRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function post(): Response
     {
@@ -51,7 +52,7 @@ class PutTransactionRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
@@ -62,6 +63,5 @@ class PutTransactionRequest extends Request
         }
 
         return new PostTransactionResponse($data['data']);
-
     }
 }

@@ -40,20 +40,24 @@ class GetBillsRequest extends Request
      *
      * @param string $url
      * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('bills');
     }
+
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
         // TODO: Implement put() method.
     }
+
     /**
      * @throws ApiHttpException
      * @return Response

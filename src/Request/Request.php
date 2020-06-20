@@ -37,6 +37,8 @@ use GuzzleHttp\Exception\GuzzleException;
 abstract class Request
 {
     protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
+    /** @var string|null path to trusted self signed certificate. Supply null to use system certificates. */
+    protected $trustedCertPath = null;
     /** @var string */
     private $base;
     /** @var array */
@@ -49,14 +51,14 @@ abstract class Request
     private $uri;
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     abstract public function get(): Response;
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     abstract public function put(): Response;
 
@@ -149,15 +151,15 @@ abstract class Request
     }
 
     /**
-     * @return Response
      * @throws ApiHttpException
+     * @return Response
      */
     abstract public function post(): Response;
 
     /**
-     * @return array
      * @throws GuzzleException
      * @throws ApiException
+     * @return array
      */
     protected function authenticatedGet(): array
     {
@@ -167,9 +169,9 @@ abstract class Request
     }
 
     /**
-     * @return array
      * @throws GuzzleException
      * @throws ApiException
+     * @return array
      */
     protected function authenticatedPost(): array
     {
@@ -177,15 +179,15 @@ abstract class Request
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
-        $client  = $this->getClient();
+        $client = $this->getClient();
         $options = [
-            'headers'    => [
+            'headers' => [
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body' => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
@@ -194,7 +196,7 @@ abstract class Request
         $res = $client->request('POST', $fullUri, $options);
 
         if (422 === $res->getStatusCode()) {
-            $body = (string)$res->getBody();
+            $body = (string) $res->getBody();
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
             if (null === $json) {
@@ -204,10 +206,10 @@ abstract class Request
             return $json;
         }
         if (200 !== $res->getStatusCode()) {
-            throw new ApiException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string)$res->getBody()));
+            throw new ApiException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string) $res->getBody()));
         }
 
-        $body = (string)$res->getBody();
+        $body = (string) $res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
@@ -218,9 +220,9 @@ abstract class Request
     }
 
     /**
-     * @return array
      * @throws GuzzleException
      * @throws ApiException
+     * @return array
      */
     protected function authenticatedPut(): array
     {
@@ -228,15 +230,15 @@ abstract class Request
         if (null !== $this->parameters) {
             $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
         }
-        $client  = $this->getClient();
+        $client = $this->getClient();
         $options = [
-            'headers'    => [
+            'headers' => [
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
             ],
             'exceptions' => false,
-            'body'       => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+            'body' => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
         ];
 
         $debugOpt = $options;
@@ -245,7 +247,7 @@ abstract class Request
         $res = $client->request('PUT', $fullUri, $options);
 
         if (422 === $res->getStatusCode()) {
-            $body = (string)$res->getBody();
+            $body = (string) $res->getBody();
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
             if (null === $json) {
@@ -255,10 +257,10 @@ abstract class Request
             return $json;
         }
         if (200 !== $res->getStatusCode()) {
-            throw new ApiException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string)$res->getBody()));
+            throw new ApiException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string) $res->getBody()));
         }
 
-        $body = (string)$res->getBody();
+        $body = (string) $res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
@@ -269,8 +271,8 @@ abstract class Request
     }
 
     /**
-     * @return array
      * @throws ApiException
+     * @return array
      */
     private function freshAuthenticatedGet(): array
     {
@@ -283,21 +285,21 @@ abstract class Request
         try {
             $res = $client->request(
                 'GET', $fullUri, [
-                         'headers' => [
-                             'Accept'        => 'application/json',
-                             'Content-Type'  => 'application/json',
-                             'Authorization' => sprintf('Bearer %s', $this->getToken()),
-                         ],
-                     ]
+                    'headers' => [
+                        'Accept'        => 'application/json',
+                        'Content-Type'  => 'application/json',
+                        'Authorization' => sprintf('Bearer %s', $this->getToken()),
+                    ],
+                ]
             );
         } catch (Exception $e) {
             throw new ApiException(sprintf('GuzzleException: %s', $e->getMessage()));
         }
         if (200 !== $res->getStatusCode()) {
-            throw new ApiException(sprintf('Error accessing %s. Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string)$res->getBody()));
+            throw new ApiException(sprintf('Error accessing %s. Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string) $res->getBody()));
         }
 
-        $body = (string)$res->getBody();
+        $body = (string) $res->getBody();
         $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
 
         if (null === $json) {
@@ -313,7 +315,8 @@ abstract class Request
     private function getClient(): Client
     {
         // config here
-
-        return new Client;
+        return new Client([
+            'verify' => (null !== $this->trustedCertPath) ? $this->trustedCertPath : true,
+        ]);
     }
 }

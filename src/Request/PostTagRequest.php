@@ -1,6 +1,6 @@
 <?php
-declare(strict_types=1);
 
+declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
@@ -12,26 +12,27 @@ use GrumpyDictator\FFIIIApiSupport\Response\ValidationErrorResponse;
 use GuzzleHttp\Exception\GuzzleException;
 
 /**
- * Class PostTagRequest
+ * Class PostTagRequest.
  */
 class PostTagRequest extends Request
 {
-
     /**
      * PostTagRequest constructor.
      *
      * @param string $url
      * @param string $token
+     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token)
+    public function __construct(string $url, string $token, string $trustedCertPath = null)
     {
+        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('tags');
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function get(): Response
     {
@@ -39,7 +40,7 @@ class PostTagRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function put(): Response
     {
@@ -47,7 +48,7 @@ class PostTagRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function post(): Response
     {
