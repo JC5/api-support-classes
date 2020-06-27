@@ -39,11 +39,9 @@ class GetBudgetsRequest extends Request
      * GetBudgetsRequest constructor.
      * @param string $url
      * @param string $token
-     * @param string|null $trustedCertPath (optional) path to trusted (self-signed) certificate
      */
-    public function __construct(string $url, string $token, string $trustedCertPath = null)
+    public function __construct(string $url, string $token)
     {
-        $this->trustedCertPath = $trustedCertPath;
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('budgets');
