@@ -37,21 +37,6 @@ class TransactionGroup
     public $transactions;
 
     /**
-     * TransactionGroup constructor.
-     *
-     * @param array $data
-     */
-    public function __construct(array $data)
-    {
-        $this->transactions = [];
-        $this->id           = (int) $data['id'];
-        $this->groupTitle   = $data['attributes']['group_title'];
-        foreach ($data['attributes']['transactions'] as $transaction) {
-            $this->transactions[] = new Transaction($transaction);
-        }
-    }
-
-    /**
      * @param array $data
      *
      * @return static

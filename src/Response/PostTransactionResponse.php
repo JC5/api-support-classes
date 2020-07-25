@@ -45,7 +45,7 @@ class PostTransactionResponse extends Response
     public function __construct(array $data)
     {
         if (isset($data['id'])) {
-            $this->transactionGroup = new TransactionGroup($data);
+            $this->transactionGroup = TransactionGroup::fromArray($data);
         }
         $this->rawData = $data;
     }
