@@ -74,10 +74,10 @@ class GetTagsResponse extends Response implements Iterator, Countable
      * Return the current element.
      *
      * @link  https://php.net/manual/en/iterator.current.php
-     * @return Bill
+     * @return Tag
      * @since 5.0.0
      */
-    public function current(): Bill
+    public function current(): Tag
     {
         return $this->collection->get($this->position);
     }
