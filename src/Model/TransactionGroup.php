@@ -50,4 +50,22 @@ class TransactionGroup
             $this->transactions[] = new Transaction($transaction);
         }
     }
+
+    /**
+     * @param array $data
+     *
+     * @return static
+     */
+    public static function fromArray(array $data): self
+    {
+        $model               = new self;
+        $model->transactions = [];
+        $model->id           = (int) $data['id'];
+        $model->groupTitle   = $data['attributes']['group_title'];
+        foreach ($data['attributes']['transactions'] as $transaction) {
+            $model->transactions[] = new Transaction($transaction);
+        }
+
+        return $model;
+    }
 }
