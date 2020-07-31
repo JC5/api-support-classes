@@ -47,6 +47,8 @@ class Transaction
     public $type;
     /** @var tags */
     public $tags;
+    /** @var string */
+    public $destinationName;
 
     /**
      * Transaction constructor.
@@ -57,6 +59,7 @@ class Transaction
     {
         $this->id                    = (int) $data['transaction_journal_id'];
         $this->description           = $data['description'];
+        $this->destinationName       = $data['destination_name'];
         $this->type                  = $data['type'];
         $this->date                  = $data['date'];
         $this->amount                = $data['amount'];
