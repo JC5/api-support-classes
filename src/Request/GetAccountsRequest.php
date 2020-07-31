@@ -82,8 +82,9 @@ class GetAccountsRequest extends Request
         $page          = 1;
 
         while ($hasNextPage && $loopCount < 30) {
-            $parameters         = $this->getParameters();
-            $parameters['page'] = $page;
+            $parameters          = $this->getParameters();
+            $parameters['page']  = $page;
+            $parameters['limit'] = 250;
             $this->setParameters($parameters);
             try {
                 $data = $this->authenticatedGet();
