@@ -348,6 +348,6 @@ abstract class Request
             // dont respond to time out, let it try again.
             return;
         }
-        throw new ApiHttpException($e->getMessage(), $e);
+        throw new ApiHttpException($e->getMessage());
     }
 }
