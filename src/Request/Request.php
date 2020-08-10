@@ -333,7 +333,6 @@ abstract class Request
     {
         $opts = [
             'verify'          => $this->verify,
-            'timeout'         => $this->timeOut,
             'connect_timeout' => $this->timeOut,
         ];
         return new Client($opts);
