@@ -190,6 +190,7 @@ abstract class Request
         // loop 5 times just in case.
         $success = false;
         $loop    = 0;
+        $res     = null;
         /** @var Exception $lastError */
         $lastError = null;
         while (false === $success && $loop < 5) {
@@ -202,7 +203,7 @@ abstract class Request
             $success = true;
             $loop++;
         }
-        if (5 === $loop && false === $success) {
+        if ((5 === $loop && false === $success) || null === $res) {
             $lastErrorMessage = null !== $lastError ? $lastError->getMessage() : 'Unknown error.';
             throw new ApiHttpException(sprintf('Tried "%s" 5 times but failed: %s', $fullUri, $lastErrorMessage));
         }
@@ -272,6 +273,7 @@ abstract class Request
         // loop 5 times just in case.
         $success = false;
         $loop    = 0;
+        $res     = null;
         /** @var Exception $lastError */
         $lastError = null;
         while (false === $success && $loop < 5) {
@@ -284,7 +286,7 @@ abstract class Request
             $success = true;
             $loop++;
         }
-        if (5 === $loop && false === $success) {
+        if ((5 === $loop && false === $success) || null === $res) {
             $lastErrorMessage = null !== $lastError ? $lastError->getMessage() : 'Unknown error.';
             throw new ApiHttpException(sprintf('Tried "%s" 5 times but failed: %s', $fullUri, $lastErrorMessage));
         }
