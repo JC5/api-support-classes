@@ -216,7 +216,7 @@ abstract class Request
         try {
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
-            throw new ApiHttpException('Could not decode JSON from URL "%s": %s', $fullUri, $e->getMessage());
+            throw new ApiHttpException(sprintf('Could not decode JSON from URL "%s": %s', $fullUri, $e->getMessage()));
         }
 
         if (null === $json) {
