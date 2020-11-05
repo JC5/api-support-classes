@@ -25,7 +25,6 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
 use Exception;
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GuzzleHttp\Client;
@@ -180,7 +179,8 @@ abstract class Request
 
         $client  = $this->getClient();
         $options = [
-            'headers' => [
+            'http_errors' => false,
+            'headers'     => [
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
@@ -258,6 +258,7 @@ abstract class Request
         $client = $this->getClient();
         try {
             $options = [
+                'http_errors' => false,
                 'headers'    => [
                     'Accept'        => 'application/json',
                     'Content-Type'  => 'application/json',
@@ -339,12 +340,12 @@ abstract class Request
     }
 
     /**
-     * @param Exception $e
+     * @param GuzzleException $e
      * @throws ApiHttpException
      */
-    private function handleException(Exception $e): void
+    private function handleException(GuzzleException $e): void
     {
-        $message = $e->getMessage();
+        $message    = $e->getMessage();
         if (str_contains($message, 'cURL error 28')) {
             // dont respond to time out, let it try again.
             return;
