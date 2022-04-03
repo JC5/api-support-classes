@@ -46,8 +46,8 @@ class TransactionGroup
         $model               = new self;
         $model->transactions = [];
         $model->id           = (int) $data['id'];
-        $model->groupTitle   = $data['attributes']['group_title'];
-        foreach ($data['attributes']['transactions'] as $transaction) {
+        $model->groupTitle   = $data['attributes']['group_title'] ?? '';
+        foreach ($data['attributes']['transactions'] ?? [] as $transaction) {
             $model->transactions[] = new Transaction($transaction);
         }
 

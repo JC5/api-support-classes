@@ -73,7 +73,7 @@ class PostTransactionRequest extends Request
             return new ValidationErrorResponse($data['errors']);
         }
 
-        return new PostTransactionResponse($data['data']);
+        return new PostTransactionResponse($data['data'] ?? []);
     }
 
     /**
