@@ -37,6 +37,7 @@ use JsonException;
 abstract class Request
 {
     protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
+    protected const VALIDATION_DUPLICATE_MSG = 'Duplicate of transaction #';
     /** @var string */
     private $base;
     /** @var array */

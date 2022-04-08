@@ -72,6 +72,10 @@ class PostTransactionRequest extends Request
         if (isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
             return new ValidationErrorResponse($data['errors']);
         }
+        if (isset($data['message']) && str_starts_with($data['message'], self::VALIDATION_DUPLICATE_MSG)) {
+            return new ValidationErrorResponse($data['errors']);
+        }
+
 
         return new PostTransactionResponse($data['data'] ?? []);
     }
