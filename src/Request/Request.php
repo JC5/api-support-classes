@@ -36,22 +36,15 @@ use JsonException;
  */
 abstract class Request
 {
-    protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
+    protected const VALIDATION_ERROR_MSG     = 'The given data was invalid.';
     protected const VALIDATION_DUPLICATE_MSG = 'Duplicate of transaction #';
-    /** @var string */
-    private $base;
-    /** @var array */
-    private $body;
-    /** @var array */
-    private $parameters;
-    /** @var string */
-    private $token;
-    /** @var string */
-    private $uri;
-    /** @var bool|string */
-    private $verify = true;
-    /** @var float */
-    private $timeOut = 3.14;
+    private string $base;
+    private array  $body;
+    private array  $parameters;
+    private string $token;
+    private string $uri;
+    private bool   $verify  = true;
+    private float  $timeOut = 3.14;
 
     /**
      * @param bool|string $verify
@@ -260,13 +253,13 @@ abstract class Request
         try {
             $options = [
                 'http_errors' => false,
-                'headers'    => [
+                'headers'     => [
                     'Accept'        => 'application/json',
                     'Content-Type'  => 'application/json',
                     'Authorization' => sprintf('Bearer %s', $this->getToken()),
                 ],
-                'exceptions' => false,
-                'body'       => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+                'exceptions'  => false,
+                'body'        => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
             ];
         } catch (JsonException $e) {
             throw new ApiHttpException(sprintf('Could not encode JSON body for "%s"', $fullUri));
@@ -346,7 +339,7 @@ abstract class Request
      */
     private function handleException(GuzzleException $e): void
     {
-        $message    = $e->getMessage();
+        $message = $e->getMessage();
         if (str_contains($message, 'cURL error 28')) {
             // dont respond to time out, let it try again.
             return;

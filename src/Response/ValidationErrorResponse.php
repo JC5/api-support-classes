@@ -31,8 +31,7 @@ use Illuminate\Support\MessageBag;
  */
 class ValidationErrorResponse extends Response
 {
-    /** @var MessageBag */
-    public $errors;
+    public MessageBag $errors;
 
     /**
      * Response constructor.

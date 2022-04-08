@@ -29,20 +29,13 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Account
 {
-    /** @var string */
-    public $bic;
-    /** @var string */
-    public $currencyCode;
-    /** @var string */
-    public $iban;
-    /** @var int */
-    public $id;
-    /** @var string */
-    public $name;
-    /** @var string */
-    public $number;
-    /** @var string */
-    public $type;
+    public string $bic;
+    public string $currencyCode;
+    public string $iban;
+    public int $id;
+    public string $name;
+    public string $number;
+    public string $type;
 
     /**
      * Account constructor.

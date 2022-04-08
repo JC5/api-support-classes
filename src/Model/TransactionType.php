@@ -29,14 +29,9 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class TransactionType
 {
-    /** @var string */
-    public const TRANSFER = 'transfer';
-    /** @var string */
-    public const WITHDRAWAL = 'withdrawal';
-    /** @var string */
-    public const DEPOSIT = 'deposit';
-    /** @var string */
+    public const TRANSFER        = 'transfer';
+    public const WITHDRAWAL      = 'withdrawal';
+    public const DEPOSIT         = 'deposit';
     public const OPENING_BALANCE = 'opening balance';
-    /** @var string */
-    public const RECONCILIATION = 'reconciliation';
+    public const RECONCILIATION  = 'reconciliation';
 }

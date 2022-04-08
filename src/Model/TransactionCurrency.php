@@ -29,12 +29,9 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class TransactionCurrency
 {
-    /** @var string */
-    public $code;
-    /** @var int */
-    public $id;
-    /** @var string */
-    public $name;
+    public string $code;
+    public int    $id;
+    public string $name;
 
     /**
      * Account constructor.

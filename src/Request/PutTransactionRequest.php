@@ -15,8 +15,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class PutTransactionRequest extends Request
 {
-    /** @var int */
-    private $groupId;
+    private int $groupId;
 
     /**
      * PutTransactionRequest constructor.

@@ -31,8 +31,7 @@ use GrumpyDictator\FFIIIApiSupport\Model\Account;
  */
 class GetAccountResponse extends Response
 {
-    /** @var Account */
-    private $account;
+    private Account $account;
 
     /**
      * Response constructor.

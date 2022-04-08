@@ -29,12 +29,9 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Tag
 {
-    /** @var string */
-    public $date;
-    /** @var int */
-    public $id;
-    /** @var string */
-    public $tag;
+    public string $date;
+    public int $id;
+    public string $tag;
 
     /**
      * Tag constructor.

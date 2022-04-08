@@ -31,8 +31,7 @@ use GrumpyDictator\FFIIIApiSupport\Model\Preference;
  */
 class PreferenceResponse extends Response
 {
-    /** @var Preference */
-    private $preference;
+    private Preference $preference;
 
     /**
      * Response constructor.

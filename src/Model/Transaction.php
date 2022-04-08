@@ -29,26 +29,16 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Transaction
 {
-    /** @var string */
-    public $amount;
-    /** @var string */
-    public $currencyCode;
-    /** @var int */
-    public $currencyDecimalPlaces;
-    /** @var int */
-    public $currencyId;
-    /** @var string */
-    public $date;
-    /** @var string */
-    public $description;
-    /** @var int */
-    public $id;
-    /** @var string */
-    public $type;
-    /** @var tags */
-    public $tags;
-    /** @var string */
-    public $destinationName;
+    public string $amount;
+    public string $currencyCode;
+    public int    $currencyDecimalPlaces;
+    public int    $currencyId;
+    public string $date;
+    public string $description;
+    public int    $id;
+    public string $type;
+    public array  $tags;
+    public string $destinationName;
 
     /**
      * Transaction constructor.

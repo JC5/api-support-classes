@@ -29,13 +29,9 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Bill
 {
-    /** @var int */
-    public $id;
-    /** @var string */
-    public $name;
-
-    /** @var string */
-    public $repeat_freq;
+    public int    $id;
+    public string $name;
+    public string $repeat_freq;
 
     /**
      * Account constructor.

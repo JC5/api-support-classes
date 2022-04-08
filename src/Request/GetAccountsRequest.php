@@ -37,16 +37,10 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetAccountsRequest extends Request
 {
-    /** @var string */
-    public const ASSET = 'asset';
-    /** @var string */
+    public const ASSET       = 'asset';
     public const LIABILITIES = 'liabilities';
-
-    /** @var string */
-    public const ALL = 'all';
-
-    /** @var string */
-    private $type;
+    public const ALL         = 'all';
+    private string $type;
 
     /**
      * GetAccountsRequest constructor.
@@ -71,8 +65,8 @@ class GetAccountsRequest extends Request
     }
 
     /**
-     * @throws ApiHttpException
      * @return Response
+     * @throws ApiHttpException
      */
     public function get(): Response
     {
@@ -87,7 +81,7 @@ class GetAccountsRequest extends Request
             $this->setParameters($parameters);
             try {
                 $data = $this->authenticatedGet();
-            } catch (ApiException | GuzzleException $e) {
+            } catch (ApiException|GuzzleException $e) {
                 throw new ApiHttpException($e->getMessage());
             }
             $collectedRows[] = $data['data'];

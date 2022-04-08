@@ -37,8 +37,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetCurrencyRequest extends Request
 {
-    /** @var string */
-    private $code;
+    private string $code;
 
     /**
      * GetCurrenciesRequest constructor.

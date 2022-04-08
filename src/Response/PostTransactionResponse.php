@@ -31,11 +31,8 @@ use GrumpyDictator\FFIIIApiSupport\Model\TransactionGroup;
  */
 class PostTransactionResponse extends Response
 {
-    /** @var TransactionGroup */
-    private $transactionGroup;
-
-    /** @var array */
-    private $rawData;
+    private TransactionGroup $transactionGroup;
+    private array            $rawData;
 
     /**
      * Response constructor.

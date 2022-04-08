@@ -37,8 +37,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetPreferenceRequest extends Request
 {
-    /** @var string */
-    private $name;
+    private string $name;
 
     /**
      * GetBudgetsRequest constructor.

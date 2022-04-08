@@ -29,12 +29,9 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class TransactionGroup
 {
-    /** @var string */
-    public $groupTitle;
-    /** @var int */
-    public $id;
-    /** @var array */
-    public $transactions;
+    public string $groupTitle;
+    public int    $id;
+    public array  $transactions;
 
     /**
      * @param array $data

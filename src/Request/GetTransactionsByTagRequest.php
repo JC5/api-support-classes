@@ -37,8 +37,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetTransactionsByTagRequest extends Request
 {
-    /** @var int */
-    private $id;
+    private int $id;
 
     /**
      * GetTransactionsByTagRequest constructor.

@@ -31,10 +31,8 @@ use GrumpyDictator\FFIIIApiSupport\Model\Tag;
  */
 class PostTagResponse extends Response
 {
-    /** @var array */
-    private $rawData;
-    /** @var Tag */
-    private $tag;
+    private array $rawData;
+    private Tag   $tag;
 
     /**
      * Response constructor.

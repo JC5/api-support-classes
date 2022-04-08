@@ -37,8 +37,7 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetAccountRequest extends Request
 {
-    /** @var int */
-    private $id;
+    private int $id;
 
     /**
      * GetAccountsRequest constructor.
