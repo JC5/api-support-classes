@@ -33,7 +33,7 @@ class TransactionGroup
     public $groupTitle;
     /** @var int */
     public $id;
-    /** @var array */
+    /** @var Transaction[] */
     public $transactions;
 
     /**
@@ -45,7 +45,7 @@ class TransactionGroup
     {
         $model               = new self;
         $model->transactions = [];
-        $model->id           = (int) $data['id'];
+        $model->id           = (int) $data['id'] ?? -1;
         $model->groupTitle   = $data['attributes']['group_title'] ?? '';
         foreach ($data['attributes']['transactions'] ?? [] as $transaction) {
             $model->transactions[] = new Transaction($transaction);

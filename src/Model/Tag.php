@@ -52,9 +52,9 @@ class Tag
     public static function fromArray(array $array): self
     {
         $tag       = new self;
-        $tag->id   = (int) $array['id'];
-        $tag->date = $array['attributes']['date'];
-        $tag->tag  = $array['attributes']['tag'];
+        $tag->id   = (int) $array['id'] ?? -1;
+        $tag->date = $array['attributes']['date'] ?? null;
+        $tag->tag  = $array['attributes']['tag'] ?? null;
 
         return $tag;
     }

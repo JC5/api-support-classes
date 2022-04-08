@@ -50,8 +50,8 @@ class Budget
     {
         $budget = new self;
 
-        $budget->id   = (int) $array['id'];
-        $budget->name = $array['attributes']['name'];
+        $budget->id   = (int) $array['id'] ?? null;
+        $budget->name = $array['attributes']['name'] ?? null;
 
         return $budget;
     }

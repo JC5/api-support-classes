@@ -72,7 +72,7 @@ class GetSearchTransactionsRequest extends Request
             } catch (ApiException | GuzzleException $e) {
                 throw new ApiHttpException($e->getMessage());
             }
-            $collectedRows[] = $data['data'];
+            $collectedRows[] = $data['data'] ?? [];
             $totalPages      = $data['meta']['pagination']['total_pages'] ?? 1;
             if ($page < $totalPages) {
                 $page++;

@@ -50,8 +50,8 @@ class Category
     {
         $category = new self;
 
-        $category->id   = (int) $array['id'];
-        $category->name = $array['attributes']['name'];
+        $category->id   = (int) $array['id'] ?? null;
+        $category->name = $array['attributes']['name'] ?? null;
 
         return $category;
     }

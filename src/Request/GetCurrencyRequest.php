@@ -65,7 +65,7 @@ class GetCurrencyRequest extends Request
             throw new ApiHttpException($e->getMessage());
         }
 
-        return new GetCurrencyResponse($data['data']);
+        return new GetCurrencyResponse($data['data'] ?? []);
     }
 
     /**

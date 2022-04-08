@@ -55,10 +55,10 @@ class PostTagRequest extends Request
         } catch (ApiException | GuzzleException $e) {
             throw new ApiHttpException($e->getMessage());
         }
-        if (isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
+        if (array_key_exists("errors", $data) || isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
             return new ValidationErrorResponse($data['errors']);
         }
 
-        return new PostTagResponse($data['data']);
+        return new PostTagResponse($data['data'] ?? []);
     }
 }

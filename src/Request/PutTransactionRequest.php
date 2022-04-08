@@ -60,6 +60,6 @@ class PutTransactionRequest extends Request
             throw new ApiHttpException($e->getMessage());
         }
 
-        return new PostTransactionResponse($data['data']);
+        return new PostTransactionResponse($data['data'] ?? []);
     }
 }

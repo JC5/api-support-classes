@@ -45,7 +45,7 @@ class Transaction
     public $id;
     /** @var string */
     public $type;
-    /** @var tags */
+    /** @var Tag[] */
     public $tags;
     /** @var string */
     public $destinationName;
@@ -57,15 +57,15 @@ class Transaction
      */
     public function __construct(array $data)
     {
-        $this->id                    = (int) $data['transaction_journal_id'];
-        $this->description           = $data['description'];
-        $this->destinationName       = $data['destination_name'];
-        $this->type                  = $data['type'];
-        $this->date                  = $data['date'];
-        $this->amount                = $data['amount'];
-        $this->currencyCode          = $data['currency_code'];
-        $this->currencyId            = $data['currency_id'];
-        $this->currencyDecimalPlaces = $data['currency_decimal_places'];
+        $this->id                    = (int) $data['transaction_journal_id'] ?? -1;
+        $this->description           = $data['description'] ?? null;
+        $this->destinationName       = $data['destination_name'] ?? null;
+        $this->type                  = $data['type'] ?? null;
+        $this->date                  = $data['date'] ?? null;
+        $this->amount                = $data['amount'] ?? null;
+        $this->currencyCode          = $data['currency_code'] ?? null;
+        $this->currencyId            = $data['currency_id'] ?? null;
+        $this->currencyDecimalPlaces = $data['currency_decimal_places'] ?? null;
         $this->tags                  = $data['tags'] ?? [];
     }
 }

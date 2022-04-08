@@ -65,7 +65,7 @@ class GetPreferenceRequest extends Request
             throw new ApiHttpException($e->getMessage());
         }
 
-        return new PreferenceResponse($data['data']);
+        return new PreferenceResponse($data['data'] ?? []);
     }
 
     /**

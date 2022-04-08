@@ -53,9 +53,9 @@ class Bill
     {
         $bill = new self;
 
-        $bill->id          = (int) $array['id'];
-        $bill->name        = $array['attributes']['name'];
-        $bill->repeat_freq = $array['attributes']['repeat_freq'];
+        $bill->id          = (int) $array['id'] ?? -1;
+        $bill->name        = $array['attributes']['name'] ?? null;
+        $bill->repeat_freq = $array['attributes']['repeat_freq'] ?? null;
 
         return $bill;
     }

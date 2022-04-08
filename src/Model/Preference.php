@@ -41,7 +41,7 @@ class Preference
      */
     public function __construct(array $data)
     {
-        $this->name = $data['attributes']['name'];
-        $this->data = $data['attributes']['data'];
+        $this->name = $data['attributes']['name'] ?? null;
+        $this->data = $data['attributes']['data'] ?? null;
     }
 }

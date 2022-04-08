@@ -59,13 +59,13 @@ class Account
     public static function fromArray(array $array): self
     {
         $account               = new self;
-        $account->id           = (int) $array['id'];
-        $account->name         = $array['attributes']['name'];
-        $account->type         = $array['attributes']['type'];
-        $account->iban         = $array['attributes']['iban'];
-        $account->number       = $array['attributes']['account_number'];
-        $account->bic          = $array['attributes']['bic'];
-        $account->currencyCode = $array['attributes']['currency_code'];
+        $account->id           = (int) $array['id'] ?? -1;
+        $account->name         = $array['attributes']['name'] ?? null;
+        $account->type         = $array['attributes']['type'] ?? null;
+        $account->iban         = $array['attributes']['iban'] ?? null;
+        $account->number       = $array['attributes']['account_number'] ?? null;
+        $account->bic          = $array['attributes']['bic'] ?? null;
+        $account->currencyCode = $array['attributes']['currency_code'] ?? null;
 
         return $account;
     }

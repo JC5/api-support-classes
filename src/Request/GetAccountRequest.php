@@ -73,7 +73,7 @@ class GetAccountRequest extends Request
             throw new ApiHttpException($e->getMessage());
         }
 
-        return new GetAccountResponse($data['data']);
+        return new GetAccountResponse($data['data'] ?? []);
     }
 
     /**

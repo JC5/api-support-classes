@@ -52,9 +52,9 @@ class TransactionCurrency
     {
         $currency = new self;
 
-        $currency->id   = (int) $array['id'];
-        $currency->name = $array['attributes']['name'];
-        $currency->code = $array['attributes']['code'];
+        $currency->id   = (int) $array['id'] ?? -1;
+        $currency->name = $array['attributes']['name'] ?? null;
+        $currency->code = $array['attributes']['code'] ?? null;
 
         return $currency;
     }

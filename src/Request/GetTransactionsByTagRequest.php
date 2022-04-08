@@ -73,7 +73,7 @@ class GetTransactionsByTagRequest extends Request
             throw new ApiHttpException($e->getMessage());
         }
 
-        return new GetTransactionsResponse($data['data']);
+        return new GetTransactionsResponse($data['data'] ?? []);
     }
 
     /**
