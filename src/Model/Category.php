@@ -29,9 +29,13 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Category
 {
-    /** @var int */
+    /**
+     * @var int 
+     */
     public $id;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $name;
 
     /**

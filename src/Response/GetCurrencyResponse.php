@@ -31,7 +31,9 @@ use GrumpyDictator\FFIIIApiSupport\Model\TransactionCurrency;
  */
 class GetCurrencyResponse extends Response
 {
-    /** @var TransactionCurrency */
+    /**
+     * @var TransactionCurrency 
+     */
     private $currency;
 
     /**

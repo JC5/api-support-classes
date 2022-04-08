@@ -29,11 +29,17 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class TransactionCurrency
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $code;
-    /** @var int */
+    /**
+     * @var int 
+     */
     public $id;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $name;
 
     /**

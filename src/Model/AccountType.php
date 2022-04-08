@@ -29,31 +29,49 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class AccountType
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const ASSET = 'asset';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const CASH = 'cash';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const DEBT = 'debt';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const LOAN = 'loan';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const EXPENSE = 'expense';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const INITIAL_BALANCE = 'initial balance';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const MORTGAGE = 'mortgage';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const RECONCILIATION = 'reconciliation';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const REVENUE = 'revenue';
 
     public const LIABILITIES = 'liabilities';

@@ -37,19 +37,33 @@ use JsonException;
 abstract class Request
 {
     protected const VALIDATION_ERROR_MSG = 'The given data was invalid.';
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $base;
-    /** @var array */
+    /**
+     * @var array 
+     */
     private $body;
-    /** @var array */
+    /**
+     * @var array 
+     */
     private $parameters;
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $token;
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $uri;
-    /** @var bool|string */
+    /**
+     * @var bool|string 
+     */
     private $verify = true;
-    /** @var float */
+    /**
+     * @var float 
+     */
     private $timeOut = 3.14;
 
     /**
@@ -191,7 +205,9 @@ abstract class Request
         $success = false;
         $loop    = 0;
         $res     = null;
-        /** @var Exception $lastError */
+        /**
+ * @var Exception $lastError 
+*/
         $lastError = null;
         while (false === $success && $loop < 5) {
             try {
@@ -245,7 +261,7 @@ abstract class Request
     }
 
     /**
-     * @param string $method
+     * @param  string $method
      * @return array
      * @throws ApiHttpException
      */
@@ -275,7 +291,9 @@ abstract class Request
         $success = false;
         $loop    = 0;
         $res     = null;
-        /** @var Exception $lastError */
+        /**
+ * @var Exception $lastError 
+*/
         $lastError = null;
         while (false === $success && $loop < 5) {
             try {
@@ -340,7 +358,7 @@ abstract class Request
     }
 
     /**
-     * @param GuzzleException $e
+     * @param  GuzzleException $e
      * @throws ApiHttpException
      */
     private function handleException(GuzzleException $e): void

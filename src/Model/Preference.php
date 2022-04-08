@@ -29,9 +29,13 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Preference
 {
-    /** @var mixed */
+    /**
+     * @var mixed 
+     */
     public $data;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $name;
 
     /**

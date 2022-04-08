@@ -35,9 +35,13 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetSearchAccountRequest extends Request
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $field;
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $query;
 
     /**

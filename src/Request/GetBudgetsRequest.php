@@ -37,6 +37,7 @@ class GetBudgetsRequest extends Request
 {
     /**
      * GetBudgetsRequest constructor.
+     *
      * @param string $url
      * @param string $token
      */

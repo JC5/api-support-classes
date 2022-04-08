@@ -37,15 +37,23 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetAccountsRequest extends Request
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const ASSET = 'asset';
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const LIABILITIES = 'liabilities';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     public const ALL = 'all';
 
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $type;
 
     /**

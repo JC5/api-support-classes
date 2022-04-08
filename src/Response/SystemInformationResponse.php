@@ -29,15 +29,25 @@ namespace GrumpyDictator\FFIIIApiSupport\Response;
  */
 class SystemInformationResponse extends Response
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $apiVersion;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $driver;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $operatingSystem;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $phpVersion;
-    /** @var string */
+    /**
+     * @var string 
+     */
     public $version;
 
     /**

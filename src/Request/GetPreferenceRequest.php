@@ -37,7 +37,9 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GetPreferenceRequest extends Request
 {
-    /** @var string */
+    /**
+     * @var string 
+     */
     private $name;
 
     /**
