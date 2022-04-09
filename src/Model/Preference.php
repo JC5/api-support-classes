@@ -33,13 +33,18 @@ class Preference
     public string $name;
 
     /**
-     * Preference constructor.
+     * @param array $array
      *
-     * @param array $data
+     * @return static
      */
-    public function __construct(array $data)
+    public static function fromArray(array $array): self
     {
-        $this->name = $data['attributes']['name'];
-        $this->data = $data['attributes']['data'];
+        $preference = new self;
+
+        $preference->data = $array['attributes']['data'];
+        $preference->name = $array['attributes']['name'];
+
+
+        return $preference;
     }
 }

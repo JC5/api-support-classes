@@ -47,9 +47,9 @@ abstract class Request
     private float  $timeOut = 3.14;
 
     /**
-     * @param bool|string $verify
+     * @param bool $verify
      */
-    public function setVerify($verify): void
+    public function setVerify(bool $verify): void
     {
         $this->verify = $verify;
     }
@@ -99,7 +99,7 @@ abstract class Request
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function getBody(): ?array
     {
@@ -245,9 +245,9 @@ abstract class Request
      */
     private function authenticatedSubmission(string $method): array
     {
-        $fullUri = sprintf('%s/api/v1/%s', $this->getBase(), $this->getUri());
+        $fullURL = sprintf('%s/api/v1/%s', $this->getBase(), $this->getUri());
         if (null !== $this->parameters) {
-            $fullUri = sprintf('%s?%s', $fullUri, http_build_query($this->parameters));
+            $fullURL = sprintf('%s?%s', $fullURL, http_build_query($this->parameters));
         }
         $client = $this->getClient();
         try {
@@ -259,7 +259,7 @@ abstract class Request
                     'Authorization' => sprintf('Bearer %s', $this->getToken()),
                 ],
                 'exceptions'  => false,
-                'body'        => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR, 512),
+                'body'        => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR),
             ];
         } catch (JsonException $e) {
             throw new ApiHttpException(sprintf('Could not encode JSON body for "%s"', $fullUri));
@@ -273,7 +273,7 @@ abstract class Request
         $lastError = null;
         while (false === $success && $loop < 5) {
             try {
-                $res = $client->request($method, $fullUri, $options);
+                $res = $client->request($method, $fullURL, $options);
             } catch (GuzzleException $e) {
                 $this->handleException($e);
                 $lastError = $e;
@@ -283,7 +283,7 @@ abstract class Request
         }
         if ((5 === $loop && false === $success) || null === $res) {
             $lastErrorMessage = null !== $lastError ? $lastError->getMessage() : 'Unknown error.';
-            throw new ApiHttpException(sprintf('Tried "%s" 5 times but failed: %s', $fullUri, $lastErrorMessage));
+            throw new ApiHttpException(sprintf('Tried "%s" 5 times but failed: %s', $fullURL, $lastErrorMessage));
         }
 
         if (422 === $res->getStatusCode()) {
@@ -310,7 +310,7 @@ abstract class Request
         try {
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
-            throw new ApiHttpException('Could not decode JSON from URL "%s": %s', $fullUri, $e->getMessage());
+            throw new ApiHttpException(sprintf('Could not decode JSON from URL "%s": %s', $fullURL, $e->getMessage()));
         }
 
         if (null === $json) {
@@ -341,7 +341,7 @@ abstract class Request
     {
         $message = $e->getMessage();
         if (str_contains($message, 'cURL error 28')) {
-            // dont respond to time out, let it try again.
+            // don't respond to time out, let it try again.
             return;
         }
         throw new ApiHttpException($e->getMessage());
