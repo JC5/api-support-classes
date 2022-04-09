@@ -38,11 +38,11 @@ abstract class Request
 {
     protected const VALIDATION_ERROR_MSG     = 'The given data was invalid.';
     protected const VALIDATION_DUPLICATE_MSG = 'Duplicate of transaction #';
-    private string $base;
-    private array  $body;
-    private array  $parameters;
-    private string $token;
-    private string $uri;
+    private string $base = '';
+    private array  $body = [];
+    private array  $parameters = [];
+    private string $token = '';
+    private string $uri = '';
     private bool   $verify  = true;
     private float  $timeOut = 3.14;
 
