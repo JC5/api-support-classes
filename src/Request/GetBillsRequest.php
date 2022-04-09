@@ -24,11 +24,9 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetBillsResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
-use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class GetBillsRequest.
@@ -57,8 +55,8 @@ class GetBillsRequest extends Request
     }
 
     /**
-     * @throws ApiHttpException
      * @return Response
+     * @throws ApiHttpException
      */
     public function get(): Response
     {
@@ -72,22 +70,16 @@ class GetBillsRequest extends Request
             $parameters['page'] = $page;
             $this->setParameters($parameters);
 
-            try {
-                $data = $this->authenticatedGet();
-            } catch (ApiException | GuzzleException $e) {
-                throw new ApiHttpException($e->getMessage());
-            }
+            $data            = $this->authenticatedGet();
             $collectedRows[] = $data['data'];
             $totalPages      = $data['meta']['pagination']['total_pages'] ?? 1;
 
             if ($page < $totalPages) {
                 $page++;
+                $loopCount++;
                 continue;
             }
-            if ($page >= $totalPages) {
-                $hasNextPage = false;
-                continue;
-            }
+            $hasNextPage = false;
         }
 
         return new GetBillsResponse(array_merge(...$collectedRows));

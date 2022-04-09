@@ -24,11 +24,9 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 use GrumpyDictator\FFIIIApiSupport\Response\SystemInformationResponse;
-use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class SystemInformationRequest
@@ -50,16 +48,12 @@ class SystemInformationRequest extends Request
     }
 
     /**
-     * @throws ApiHttpException
      * @return Response
+     * @throws ApiHttpException
      */
     public function get(): Response
     {
-        try {
-            $data = $this->authenticatedGet();
-        } catch (ApiException | GuzzleException $e) {
-            throw new ApiHttpException($e->getMessage());
-        }
+        $data = $this->authenticatedGet();
 
         return new SystemInformationResponse($data['data'] ?? []);
     }

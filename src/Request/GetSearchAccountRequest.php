@@ -24,11 +24,9 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetAccountsResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
-use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class GetSearchAccountRequest.
@@ -52,8 +50,8 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @throws ApiHttpException
      * @return Response
+     * @throws ApiHttpException
      */
     public function get(): Response
     {
@@ -66,28 +64,22 @@ class GetSearchAccountRequest extends Request
             $parameters         = $this->getParameters();
             $parameters['page'] = $page;
             $this->setParameters($parameters);
-            try {
                 $data = $this->authenticatedGet();
-            } catch (ApiException | GuzzleException $e) {
-                throw new ApiHttpException($e->getMessage());
-            }
             $collectedRows[] = $data['data'];
             $totalPages      = $data['meta']['pagination']['total_pages'] ?? 1;
             if ($page < $totalPages) {
                 $page++;
+                $loopCount++;
                 continue;
             }
-            if ($page >= $totalPages) {
-                $hasNextPage = false;
-                continue;
-            }
+            $hasNextPage = false;
         }
 
         return new GetAccountsResponse(array_merge(...$collectedRows));
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getField(): ?string
     {
@@ -104,7 +96,7 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getQuery(): ?string
     {
