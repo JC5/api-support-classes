@@ -34,14 +34,6 @@ class Tag
     public string $tag;
 
     /**
-     * Tag constructor.
-     */
-    protected function __construct()
-    {
-
-    }
-
-    /**
      * @param array $array
      *
      * @return static

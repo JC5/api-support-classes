@@ -34,13 +34,6 @@ class Bill
     public string $repeat_freq;
 
     /**
-     * Account constructor.
-     */
-    protected function __construct()
-    {
-    }
-
-    /**
      * @param array $array
      *
      * @return static

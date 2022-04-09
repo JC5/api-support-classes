@@ -33,13 +33,6 @@ class Budget
     public string $name;
 
     /**
-     * Account constructor.
-     */
-    protected function __construct()
-    {
-    }
-
-    /**
      * @param array $array
      *
      * @return static

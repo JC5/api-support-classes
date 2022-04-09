@@ -33,13 +33,6 @@ class Category
     public string $name;
 
     /**
-     * Category constructor.
-     */
-    protected function __construct()
-    {
-    }
-
-    /**
      * @param array $array
      *
      * @return static

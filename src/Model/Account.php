@@ -38,13 +38,6 @@ class Account
     public string $type;
 
     /**
-     * Account constructor.
-     */
-    protected function __construct()
-    {
-    }
-
-    /**
      * @param array $array
      *
      * @return static
