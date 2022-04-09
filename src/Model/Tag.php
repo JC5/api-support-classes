@@ -29,7 +29,7 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Tag
 {
-    public string $date;
+    public ?string $date;
     public int $id;
     public string $tag;
 
