@@ -40,7 +40,7 @@ class PreferenceResponse extends Response
      */
     public function __construct(array $data)
     {
-        $this->preference = new Preference($data);
+        $this->preference = Preference::fromArray($data);
     }
 
     /**

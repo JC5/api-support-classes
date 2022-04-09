@@ -56,7 +56,7 @@ class PostTransactionResponse extends Response
     }
 
     /**
-     * @return TransactionGroup
+     * @return TransactionGroup|null
      */
     public function getTransactionGroup(): ?TransactionGroup
     {

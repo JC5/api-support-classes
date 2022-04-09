@@ -25,7 +25,6 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Response;
 
 use Countable;
-use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiException;
 use GrumpyDictator\FFIIIApiSupport\Model\Account;
 use Illuminate\Support\Collection;
 use Iterator;
@@ -48,7 +47,7 @@ class GetAccountsResponse extends Response implements Iterator, Countable
         $this->collection = new Collection;
 
         /** @var array $row */
-        foreach ($data as $index => $row) {
+        foreach ($data as $row) {
             $model = Account::fromArray($row);
             $this->collection->push($model);
         }
@@ -73,8 +72,7 @@ class GetAccountsResponse extends Response implements Iterator, Countable
      * Return the current element.
      *
      * @link  https://php.net/manual/en/iterator.current.php
-     * @throws ApiException
-     * @return Account
+     * @return Account|null
      * @since 5.0.0
      */
     public function current(): ?Account
@@ -122,7 +120,7 @@ class GetAccountsResponse extends Response implements Iterator, Countable
      * Checks if current position is valid.
      *
      * @link  https://php.net/manual/en/iterator.valid.php
-     * @return bool The return value will be casted to boolean and then evaluated.
+     * @return bool The return value will be cast to boolean and then evaluated.
      * Returns true on success or false on failure.
      * @since 5.0.0
      */

@@ -56,7 +56,7 @@ class PostTagResponse extends Response
     }
 
     /**
-     * @return Tag
+     * @return Tag|null
      */
     public function getTag(): ?Tag
     {
