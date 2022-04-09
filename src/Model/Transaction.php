@@ -54,7 +54,7 @@ class Transaction
         $this->date                  = $data['date'];
         $this->amount                = $data['amount'];
         $this->currencyCode          = $data['currency_code'];
-        $this->currencyId            = $data['currency_id'];
+        $this->currencyId            = (int) $data['currency_id'];
         $this->currencyDecimalPlaces = $data['currency_decimal_places'];
         $this->tags                  = $data['tags'] ?? [];
     }
