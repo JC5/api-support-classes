@@ -29,7 +29,8 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Preference
 {
-    public array $data;
+    public array  $arrayData;
+    public string $stringData;
     public string $name;
 
     /**
@@ -40,9 +41,14 @@ class Preference
     public static function fromArray(array $array): self
     {
         $preference = new self;
-
-        $preference->data = $array['attributes']['data'];
         $preference->name = $array['attributes']['name'];
+
+        if (is_array($array['attributes']['data'])) {
+            $preference->arrayData = $array['attributes']['data'];
+        }
+        if (!is_array($array['attributes']['data'])) {
+            $preference->stringData = (string) $array['attributes']['data'];
+        }
 
 
         return $preference;

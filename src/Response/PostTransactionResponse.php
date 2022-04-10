@@ -31,8 +31,8 @@ use GrumpyDictator\FFIIIApiSupport\Model\TransactionGroup;
  */
 class PostTransactionResponse extends Response
 {
-    private TransactionGroup $transactionGroup;
-    private array            $rawData;
+    private ?TransactionGroup $transactionGroup;
+    private array             $rawData;
 
     /**
      * Response constructor.
@@ -41,6 +41,7 @@ class PostTransactionResponse extends Response
      */
     public function __construct(array $data)
     {
+        $this->transactionGroup = null;
         if (isset($data['id'])) {
             $this->transactionGroup = TransactionGroup::fromArray($data);
         }
