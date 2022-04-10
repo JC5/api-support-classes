@@ -44,6 +44,8 @@ class GetSearchAccountRequest extends Request
      */
     public function __construct(string $url, string $token)
     {
+        $this->field = '';
+        $this->query = '';
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('search/accounts');

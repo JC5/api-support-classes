@@ -45,6 +45,7 @@ class GetCurrencyRequest extends Request
      */
     public function __construct(string $url, string $token)
     {
+        $this->code = 'EUR';
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('currencies');

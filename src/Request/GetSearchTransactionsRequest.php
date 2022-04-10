@@ -43,6 +43,7 @@ class GetSearchTransactionsRequest extends Request
      */
     public function __construct(string $url, string $token)
     {
+        $this->query = '';
         $this->setBase($url);
         $this->setToken($token);
         $this->setUri('search/transactions');
