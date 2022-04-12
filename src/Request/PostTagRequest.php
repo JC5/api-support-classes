@@ -48,10 +48,22 @@ class PostTagRequest extends Request
     public function post(): Response
     {
         $data = $this->authenticatedPost();
-        if (isset($data['message']) && self::VALIDATION_ERROR_MSG === $data['message']) {
+        if (array_key_exists('errors', $data) && is_array($data['errors']) ) {
             return new ValidationErrorResponse($data['errors']);
         }
-
-        return new PostTagResponse($data['data']);
+        if(!array_key_exists('data', $data)) {
+            // should be impossible to get here (see previous code) but still check.
+            if (array_key_exists('errors', $data) && is_array($data['errors']) ) {
+                return new ValidationErrorResponse($data['errors']);
+            }
+            // no data array and no error info, that's weird!
+            if(!array_key_exists('errors', $data)) {
+                $info = [
+                    'unknown_field' => [sprintf('Unknown error: %s', json_encode($data, 0, 16))]
+                ];
+                return new ValidationErrorResponse($info);
+            }
+        }
+        return new PostTagResponse($data['data'] ?? []);
     }
 }
