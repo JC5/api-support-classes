@@ -43,14 +43,14 @@ abstract class Request
     private array  $parameters   = [];
     private string $token        = '';
     private string $uri          = '';
-    private bool   $verify       = true;
+    private        $verify       = true;
     private float  $timeOut      = 3.14;
     private string $responseBody = '';
 
     /**
-     * @param bool $verify
+     * @param bool|string $verify
      */
-    public function setVerify(bool $verify): void
+    public function setVerify($verify): void
     {
         $this->verify = $verify;
     }
