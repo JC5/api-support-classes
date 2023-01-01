@@ -39,23 +39,29 @@ class Transaction
     public string $type;
     public array  $tags;
     public string $destinationName;
+    public string $sourceName;
+    public string $categoryName;
+    public string $budgetName;
 
     /**
      * Transaction constructor.
      *
-     * @param array $data
+     * @param  array  $data
      */
     public function __construct(array $data)
     {
-        $this->id                    = (int) $data['transaction_journal_id'];
+        $this->id                    = (int)$data['transaction_journal_id'];
         $this->description           = $data['description'];
         $this->destinationName       = $data['destination_name'];
+        $this->sourceName            = $data['source_name'];
         $this->type                  = $data['type'];
         $this->date                  = $data['date'];
         $this->amount                = $data['amount'];
         $this->currencyCode          = $data['currency_code'];
-        $this->currencyId            = (int) $data['currency_id'];
+        $this->currencyId            = (int)$data['currency_id'];
         $this->currencyDecimalPlaces = $data['currency_decimal_places'];
         $this->tags                  = $data['tags'] ?? [];
+        $this->categoryName          = $data['category_name'] ?? '';
+        $this->budgetName            = $data['budget_name'] ?? '';
     }
 }
