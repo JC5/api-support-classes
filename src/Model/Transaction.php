@@ -43,6 +43,9 @@ class Transaction
     public string $categoryName;
     public string $budgetName;
 
+    public int $sourceId;
+    public int $destinationId;
+
     /**
      * Transaction constructor.
      *
@@ -53,7 +56,9 @@ class Transaction
         $this->id                    = (int)$data['transaction_journal_id'];
         $this->description           = $data['description'];
         $this->destinationName       = $data['destination_name'];
+        $this->destinationId         = (int)$data['destination_id'];
         $this->sourceName            = $data['source_name'];
+        $this->sourceId              = (int)$data['source_id'];
         $this->type                  = $data['type'];
         $this->date                  = $data['date'];
         $this->amount                = $data['amount'];
