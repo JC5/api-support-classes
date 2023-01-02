@@ -70,7 +70,7 @@ class Transaction
         $this->tags                  = $data['tags'] ?? [];
         $this->categoryName          = $data['category_name'] ?? '';
         $this->budgetName            = $data['budget_name'] ?? '';
-        $this->categoryId            = $data['category_name'] ?? 0;
-        $this->budgetId              = $data['budget_name'] ?? 0;
+        $this->categoryId            = $data['category_id'] ?? 0;
+        $this->budgetId              = $data['budget_id'] ?? 0;
     }
 }
