@@ -39,8 +39,8 @@ class GetSearchAccountRequest extends Request
     /**
      * GetSearchAccountRequest constructor.
      *
-     * @param string $url
-     * @param string $token
+     * @param  string  $url
+     * @param  string  $token
      */
     public function __construct(string $url, string $token)
     {
@@ -66,7 +66,7 @@ class GetSearchAccountRequest extends Request
             $parameters         = $this->getParameters();
             $parameters['page'] = $page;
             $this->setParameters($parameters);
-                $data = $this->authenticatedGet();
+            $data            = $this->authenticatedGet();
             $collectedRows[] = $data['data'];
             $totalPages      = $data['meta']['pagination']['total_pages'] ?? 1;
             if ($page < $totalPages) {
@@ -89,7 +89,7 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @param string $field
+     * @param  string  $field
      */
     public function setField(string $field): void
     {
@@ -106,7 +106,7 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @param string $query
+     * @param  string  $query
      */
     public function setQuery(string $query): void
     {

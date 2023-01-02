@@ -42,6 +42,8 @@ class Transaction
     public string $sourceName;
     public string $categoryName;
     public string $budgetName;
+    public int    $categoryId;
+    public int    $budgetId;
 
     public int $sourceId;
     public int $destinationId;
@@ -68,5 +70,7 @@ class Transaction
         $this->tags                  = $data['tags'] ?? [];
         $this->categoryName          = $data['category_name'] ?? '';
         $this->budgetName            = $data['budget_name'] ?? '';
+        $this->categoryId            = $data['category_name'] ?? 0;
+        $this->budgetId              = $data['budget_name'] ?? 0;
     }
 }
