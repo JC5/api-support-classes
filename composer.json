@@ -55,7 +55,7 @@
     ],
     "readme": "README.md",
     "support": {
-        "email": "thegrumpydictator@gmail.com",
+        "email": "james@firefly-iii.org",
         "issues": "https://github.com/firefly-iii/firefly-iii/issues",
         "forum": "https://reddit.com/r/FireflyIII",
         "source": "https://github.com/firefly-iii/api-support-classes",
@@ -72,7 +72,7 @@
       }
     ],
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.2",
         "guzzlehttp/guzzle": "^7",
         "illuminate/support": "^10",
         "ext-json": "*"
