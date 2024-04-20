@@ -32,10 +32,13 @@ class Account
     public ?string $bic;
     public ?string $currencyCode;
     public ?string $iban;
-    public int $id;
+    public int     $id;
     public ?string $name;
     public ?string $number;
     public ?string $type;
+
+    public ?string $currentBalance;
+    public ?string $currentBalanceDate;
 
     /**
      * @param array $array
@@ -44,14 +47,16 @@ class Account
      */
     public static function fromArray(array $array): self
     {
-        $account               = new self;
-        $account->id           = (int) $array['id'];
-        $account->name         = $array['attributes']['name'];
-        $account->type         = $array['attributes']['type'];
-        $account->iban         = $array['attributes']['iban'];
-        $account->number       = $array['attributes']['account_number'];
-        $account->bic          = $array['attributes']['bic'];
-        $account->currencyCode = $array['attributes']['currency_code'];
+        $account                     = new self;
+        $account->id                 = (int) $array['id'];
+        $account->name               = $array['attributes']['name'];
+        $account->type               = $array['attributes']['type'];
+        $account->iban               = $array['attributes']['iban'];
+        $account->currentBalance     = $array['attributes']['current_balance'];
+        $account->currentBalanceDate = $array['attributes']['current_balance_date'];
+        $account->number             = $array['attributes']['account_number'];
+        $account->bic                = $array['attributes']['bic'];
+        $account->currencyCode       = $array['attributes']['currency_code'];
 
         return $account;
     }
