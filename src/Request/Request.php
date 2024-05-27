@@ -213,8 +213,11 @@ abstract class Request
         }
 
         if (200 !== $res->getStatusCode()) {
-            $this->responseBody = (string) $res->getBody();
-            throw new ApiHttpException(sprintf('Error accessing "%s". Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string) $res->getBody()));
+            $this->responseBody        = (string) $res->getBody();
+            $exception                 = new ApiHttpException(sprintf('Error accessing "%s". Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string) $res->getBody()));
+            $exception->response       = $res;
+            $exception->requestOptions = $options;
+            throw $exception;
         }
 
         $body = (string) $res->getBody();
@@ -251,6 +254,7 @@ abstract class Request
 
     /**
      * @param string $method
+     *
      * @return array
      * @throws ApiHttpException
      */
@@ -347,6 +351,7 @@ abstract class Request
 
     /**
      * @param GuzzleException $e
+     *
      * @throws ApiHttpException
      */
     private function handleException(GuzzleException $e): void

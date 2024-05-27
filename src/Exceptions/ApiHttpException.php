@@ -25,10 +25,13 @@ declare(strict_types=1);
 namespace GrumpyDictator\FFIIIApiSupport\Exceptions;
 
 use Exception;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class ApiHttpException.
  */
 class ApiHttpException extends Exception
 {
+    public ?ResponseInterface $response;
+    public array $requestOptions = [];
 }
