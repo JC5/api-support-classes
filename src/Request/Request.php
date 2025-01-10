@@ -38,14 +38,15 @@ abstract class Request
 {
     protected const VALIDATION_ERROR_MSG     = 'The given data was invalid.';
     protected const VALIDATION_DUPLICATE_MSG = 'Duplicate of transaction #';
-    private string $base         = '';
-    private array  $body         = [];
-    private array  $parameters   = [];
-    private string $token        = '';
-    private string $uri          = '';
-    private        $verify       = true;
-    private float  $timeOut      = 3.14;
-    private string $responseBody = '';
+    private string            $base         = '';
+    private array             $body         = [];
+    private array             $parameters   = [];
+    private string            $token        = '';
+    private string            $uri          = '';
+    private                   $verify       = true;
+    private float             $timeOut      = 3.14;
+    private string|array|null $cert         = null;
+    private string            $responseBody = '';
 
     /**
      * @param bool|string $verify
@@ -162,6 +163,22 @@ abstract class Request
     public function setUri(string $uri): void
     {
         $this->uri = $uri;
+    }
+
+    /**
+     * @return string|array|null
+     */
+    public function getCert()
+    {
+        return $this->cert;
+    }
+
+    /**
+     * @param string|array|null $cert
+     */
+    public function setCert(string|array|null $cert): void
+    {
+        $this->cert = $cert;
     }
 
     /**
@@ -344,7 +361,8 @@ abstract class Request
     {
         $opts = [
             'verify'          => $this->verify,
-            'connect_timeout' => $this->timeOut,
+	    'connect_timeout' => $this->timeOut,
+	    'cert'            => $this->cert,
         ];
         return new Client($opts);
     }
