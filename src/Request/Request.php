@@ -205,6 +205,7 @@ abstract class Request
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
+                'User-Agent'   => 'Mozilla/5.0 Firefly III API Client',
             ],
         ];
 
@@ -289,6 +290,7 @@ abstract class Request
                     'Accept'        => 'application/json',
                     'Content-Type'  => 'application/json',
                     'Authorization' => sprintf('Bearer %s', $this->getToken()),
+                    'User-Agent'   => 'Mozilla/5.0 Firefly III API Client',
                 ],
                 'exceptions'  => false,
                 'body'        => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR),
