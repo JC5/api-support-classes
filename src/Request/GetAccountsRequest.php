@@ -105,7 +105,7 @@ class GetAccountsRequest extends Request
     public function setType(string $type): void
     {
         $this->type = $type;
-        $this->setParameters(['type' => $type]);
+        $this->setParameters(['types' => $type]);
     }
 
     /**
