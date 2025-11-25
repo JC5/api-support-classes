@@ -74,7 +74,7 @@
     "require": {
         "php": ">=8.3",
         "guzzlehttp/guzzle": "^7",
-        "illuminate/support": "^11",
+        "illuminate/support": "^11|^12",
         "ext-json": "*"
     },
     "require-dev": {
