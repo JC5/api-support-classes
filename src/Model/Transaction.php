@@ -57,7 +57,7 @@ class Transaction
     {
         $this->id                    = (int)$data['transaction_journal_id'];
         $this->description           = $data['description'];
-        $this->destinationName       = $data['destination_name'];
+        $this->destinationName       = (string) $data['destination_name'];
         $this->destinationId         = (int)$data['destination_id'];
         $this->sourceName            = $data['source_name'];
         $this->sourceId              = (int)$data['source_id'];
