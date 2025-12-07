@@ -35,9 +35,9 @@ use GrumpyDictator\FFIIIApiSupport\Response\Response;
  */
 class GetAccountsRequest extends Request
 {
+    public const ALL         = 'all';
     public const ASSET       = 'asset';
     public const LIABILITIES = 'liabilities';
-    public const ALL         = 'all';
     private string $type;
 
     /**
@@ -54,13 +54,7 @@ class GetAccountsRequest extends Request
         $this->setUri('accounts');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -114,5 +108,13 @@ class GetAccountsRequest extends Request
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

@@ -47,6 +47,8 @@ class SystemInformationRequest extends Request
         $this->setUri('about');
     }
 
+    public function delete(): Response {}
+
     /**
      * @return Response
      * @throws ApiHttpException

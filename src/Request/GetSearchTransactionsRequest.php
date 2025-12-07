@@ -35,12 +35,6 @@ class GetSearchTransactionsRequest extends Request
 {
     private string $query;
 
-    /**
-     * GetSearchAccountRequest constructor.
-     *
-     * @param string $url
-     * @param string $token
-     */
     public function __construct(string $url, string $token)
     {
         $this->query = '';
@@ -48,6 +42,14 @@ class GetSearchTransactionsRequest extends Request
         $this->setToken($token);
         $this->setUri('search/transactions');
     }
+
+    /**
+     * GetSearchAccountRequest constructor.
+     *
+     * @param string $url
+     * @param string $token
+     */
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -96,18 +98,18 @@ class GetSearchTransactionsRequest extends Request
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
-
-    /**
      * @return Response
      */
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

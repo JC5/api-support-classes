@@ -26,7 +26,6 @@ namespace GrumpyDictator\FFIIIApiSupport\Request;
 
 use GrumpyDictator\FFIIIApiSupport\Exceptions\ApiHttpException;
 use GrumpyDictator\FFIIIApiSupport\Response\GetTransactionResponse;
-use GrumpyDictator\FFIIIApiSupport\Response\GetTransactionsResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 
 class GetTransactionRequest extends Request
@@ -39,25 +38,18 @@ class GetTransactionRequest extends Request
         $this->setUri(sprintf('transactions/%d', $id));
     }
 
+    public function delete(): Response {}
+
     /**
      * @return Response
      * @throws ApiHttpException
      */
     public function get(): Response
     {
-        $parameters         = $this->getParameters();
+        $parameters = $this->getParameters();
         $this->setParameters($parameters);
-        $data            = $this->authenticatedGet();
+        $data = $this->authenticatedGet();
         return new GetTransactionResponse($data);
-    }
-
-
-    /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
     }
 
     /**
@@ -66,5 +58,13 @@ class GetTransactionRequest extends Request
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

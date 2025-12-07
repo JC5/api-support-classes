@@ -35,6 +35,7 @@ class GetBudgetsRequest extends Request
 {
     /**
      * GetBudgetsRequest constructor.
+     *
      * @param string $url
      * @param string $token
      */
@@ -44,6 +45,8 @@ class GetBudgetsRequest extends Request
         $this->setToken($token);
         $this->setUri('budgets');
     }
+
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -61,7 +64,7 @@ class GetBudgetsRequest extends Request
             $parameters['page'] = $page;
             $this->setParameters($parameters);
 
-                $data = $this->authenticatedGet();
+            $data            = $this->authenticatedGet();
             $collectedRows[] = $data['data'];
             $totalPages      = $data['meta']['pagination']['total_pages'] ?? 1;
 
@@ -77,18 +80,18 @@ class GetBudgetsRequest extends Request
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
-
-    /**
      * @return Response
      */
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

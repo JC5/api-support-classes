@@ -36,53 +36,29 @@ use JsonException;
  */
 abstract class Request
 {
-    protected const VALIDATION_ERROR_MSG     = 'The given data was invalid.';
     protected const VALIDATION_DUPLICATE_MSG = 'Duplicate of transaction #';
-    private string            $base         = '';
-    private array             $body         = [];
-    private array             $parameters   = [];
-    private string            $token        = '';
-    private string            $uri          = '';
-    private                   $verify       = true;
-    private float             $timeOut      = 3.14;
-    private string|array|null $cert         = null;
-    private string            $responseBody = '';
+    protected const VALIDATION_ERROR_MSG     = 'The given data was invalid.';
+    private string                $base         = '';
+    private array                 $body         = [];
+    private string | array | null $cert         = null;
+    private array                 $parameters   = [];
+    private string                $responseBody = '';
+    private float                 $timeOut      = 3.14;
+    private string                $token        = '';
+    private string                $uri          = '';
+    private                       $verify       = true;
 
     /**
-     * @param bool|string $verify
+     * @return Response
+     * @throws ApiHttpException
      */
-    public function setVerify($verify): void
-    {
-        $this->verify = $verify;
-    }
-
-    /**
-     * @param array $body
-     */
-    public function setBody(array $body): void
-    {
-        $this->body = $body;
-    }
-
-    /**
-     * @param float $timeOut
-     */
-    public function setTimeOut(float $timeOut): void
-    {
-        $this->timeOut = $timeOut;
-    }
+    abstract public function delete(): Response;
 
     /**
      * @return Response
      * @throws ApiHttpException
      */
     abstract public function get(): Response;
-
-    /**
-     * @return Response
-     * @throws ApiHttpException
-     */
-    abstract public function put(): Response;
 
     /**
      * @return mixed
@@ -109,6 +85,30 @@ abstract class Request
     }
 
     /**
+     * @param array $body
+     */
+    public function setBody(array $body): void
+    {
+        $this->body = $body;
+    }
+
+    /**
+     * @return string|array|null
+     */
+    public function getCert()
+    {
+        return $this->cert;
+    }
+
+    /**
+     * @param string|array|null $cert
+     */
+    public function setCert(string | array | null $cert): void
+    {
+        $this->cert = $cert;
+    }
+
+    /**
      * @return array
      */
     public function getParameters(): array
@@ -117,20 +117,19 @@ abstract class Request
     }
 
     /**
-     * @return string
-     */
-    public function getResponseBody(): string
-    {
-        return $this->responseBody;
-    }
-
-
-    /**
      * @param array $parameters
      */
     public function setParameters(array $parameters): void
     {
         $this->parameters = $parameters;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponseBody(): string
+    {
+        return $this->responseBody;
     }
 
     /**
@@ -166,26 +165,32 @@ abstract class Request
     }
 
     /**
-     * @return string|array|null
+     * @return Response
+     * @throws ApiHttpException
      */
-    public function getCert()
-    {
-        return $this->cert;
-    }
-
-    /**
-     * @param string|array|null $cert
-     */
-    public function setCert(string|array|null $cert): void
-    {
-        $this->cert = $cert;
-    }
+    abstract public function post(): Response;
 
     /**
      * @return Response
      * @throws ApiHttpException
      */
-    abstract public function post(): Response;
+    abstract public function put(): Response;
+
+    /**
+     * @param float $timeOut
+     */
+    public function setTimeOut(float $timeOut): void
+    {
+        $this->timeOut = $timeOut;
+    }
+
+    /**
+     * @param bool|string $verify
+     */
+    public function setVerify($verify): void
+    {
+        $this->verify = $verify;
+    }
 
     /**
      * @return array
@@ -205,7 +210,7 @@ abstract class Request
                 'Accept'        => 'application/json',
                 'Content-Type'  => 'application/json',
                 'Authorization' => sprintf('Bearer %s', $this->getToken()),
-                'User-Agent'   => 'Mozilla/5.0 Firefly III API Client',
+                'User-Agent'    => 'Mozilla/5.0 Firefly III API Client',
             ],
         ];
 
@@ -231,14 +236,14 @@ abstract class Request
         }
 
         if (200 !== $res->getStatusCode()) {
-            $this->responseBody        = (string) $res->getBody();
-            $exception                 = new ApiHttpException(sprintf('Error accessing "%s". Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string) $res->getBody()));
+            $this->responseBody        = (string)$res->getBody();
+            $exception                 = new ApiHttpException(sprintf('Error accessing "%s". Status code is %d. Body is: %s', $fullUri, $res->getStatusCode(), (string)$res->getBody()));
             $exception->response       = $res;
             $exception->requestOptions = $options;
             throw $exception;
         }
 
-        $body = (string) $res->getBody();
+        $body = (string)$res->getBody();
         try {
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
@@ -270,6 +275,11 @@ abstract class Request
         return $this->authenticatedSubmission('PUT');
     }
 
+    protected function authenticatedDelete(): array
+    {
+        return $this->authenticatedSubmission('DELETE');
+    }
+
     /**
      * @param string $method
      *
@@ -290,10 +300,10 @@ abstract class Request
                     'Accept'        => 'application/json',
                     'Content-Type'  => 'application/json',
                     'Authorization' => sprintf('Bearer %s', $this->getToken()),
-                    'User-Agent'   => 'Mozilla/5.0 Firefly III API Client',
+                    'User-Agent'    => 'Mozilla/5.0 Firefly III API Client',
                 ],
                 'exceptions'  => false,
-                'body'        => (string) json_encode($this->getBody(), JSON_THROW_ON_ERROR),
+                'body'        => (string)json_encode($this->getBody(), JSON_THROW_ON_ERROR),
             ];
         } catch (JsonException $e) {
             throw new ApiHttpException(sprintf('Could not encode JSON body for "%s"', $fullUri));
@@ -321,7 +331,7 @@ abstract class Request
         }
 
         if (422 === $res->getStatusCode()) {
-            $body = (string) $res->getBody();
+            $body = (string)$res->getBody();
             try {
                 $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
             } catch (JsonException $e) {
@@ -336,11 +346,11 @@ abstract class Request
         }
 
         if (200 !== $res->getStatusCode()) {
-            $this->responseBody = (string) $res->getBody();
-            throw new ApiHttpException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string) $res->getBody()));
+            $this->responseBody = (string)$res->getBody();
+            throw new ApiHttpException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string)$res->getBody()));
         }
 
-        $body = (string) $res->getBody();
+        $body = (string)$res->getBody();
 
         try {
             $json = json_decode($body, true, 512, JSON_THROW_ON_ERROR);
@@ -363,8 +373,8 @@ abstract class Request
     {
         $opts = [
             'verify'          => $this->verify,
-	    'connect_timeout' => $this->timeOut,
-	    'cert'            => $this->cert,
+            'connect_timeout' => $this->timeOut,
+            'cert'            => $this->cert,
         ];
         return new Client($opts);
     }

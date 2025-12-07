@@ -37,8 +37,8 @@ class GetTransactionsRequest extends Request
     /**
      * GetSearchAccountRequest constructor.
      *
-     * @param  string  $url
-     * @param  string  $token
+     * @param string $url
+     * @param string $token
      */
     public function __construct(string $url, string $token)
     {
@@ -46,6 +46,8 @@ class GetTransactionsRequest extends Request
         $this->setToken($token);
         $this->setUri('transactions');
     }
+
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -76,13 +78,12 @@ class GetTransactionsRequest extends Request
         return new GetTransactionsResponse(array_merge(...$collectedRows));
     }
 
-
     /**
-     * @param  string  $query
+     * @return Response
      */
-    public function setFilter(string $start, string $end, string $type): void
+    public function post(): Response
     {
-        $this->setParameters(['start' => $start, 'end' => $end, 'type' => $type]);
+        // TODO: Implement post() method.
     }
 
     /**
@@ -94,10 +95,10 @@ class GetTransactionsRequest extends Request
     }
 
     /**
-     * @return Response
+     * @param string $query
      */
-    public function post(): Response
+    public function setFilter(string $start, string $end, string $type): void
     {
-        // TODO: Implement post() method.
+        $this->setParameters(['start' => $start, 'end' => $end, 'type' => $type]);
     }
 }

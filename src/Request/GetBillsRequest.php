@@ -46,13 +46,7 @@ class GetBillsRequest extends Request
         $this->setUri('bills');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -91,5 +85,13 @@ class GetBillsRequest extends Request
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

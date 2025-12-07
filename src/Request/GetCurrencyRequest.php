@@ -51,6 +51,8 @@ class GetCurrencyRequest extends Request
         $this->setUri('currencies');
     }
 
+    public function delete(): Response {}
+
     /**
      * @return Response
      * @throws ApiHttpException

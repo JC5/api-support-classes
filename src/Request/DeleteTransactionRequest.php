@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
-use GrumpyDictator\FFIIIApiSupport\Response\PostTransactionResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 
 /**
  * Class PutTransactionRequest.
  */
-class PutTransactionRequest extends Request
+class DeleteTransactionRequest extends Request
 {
     private int $groupId;
 
@@ -29,31 +28,23 @@ class PutTransactionRequest extends Request
         $this->groupId = $groupId;
     }
 
-    public function delete(): Response {}
+    /**
+     * {@inheritdoc}
+     */
+    public function get(): Response {}
 
     /**
      * {@inheritdoc}
      */
-    public function get(): Response
-    {
-        // TODO: Implement get() method.
-    }
+    public function post(): Response {}
 
     /**
      * {@inheritdoc}
      */
-    public function post(): Response
-    {
-        // TODO: Implement post() method.
-    }
+    public function put(): Response {}
 
-    /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
+    public function delete(): Response
     {
-        $data = $this->authenticatedPut();
-
-        return new PostTransactionResponse($data['data']);
+        $this->authenticatedDelete();
     }
 }

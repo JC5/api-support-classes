@@ -46,6 +46,8 @@ class GetCurrenciesRequest extends Request
         $this->setUri('currencies');
     }
 
+    public function delete(): Response {}
+
     /**
      * @return Response
      * @throws ApiHttpException
@@ -78,18 +80,18 @@ class GetCurrenciesRequest extends Request
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
-
-    /**
      * @return Response
      */
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

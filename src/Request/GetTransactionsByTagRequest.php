@@ -50,13 +50,7 @@ class GetTransactionsByTagRequest extends Request
         $this->setUri('tags');
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -75,6 +69,14 @@ class GetTransactionsByTagRequest extends Request
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 
     /**

@@ -39,8 +39,8 @@ class GetSearchAccountRequest extends Request
     /**
      * GetSearchAccountRequest constructor.
      *
-     * @param  string  $url
-     * @param  string  $token
+     * @param string $url
+     * @param string $token
      */
     public function __construct(string $url, string $token)
     {
@@ -50,6 +50,8 @@ class GetSearchAccountRequest extends Request
         $this->setToken($token);
         $this->setUri('search/accounts');
     }
+
+    public function delete(): Response {}
 
     /**
      * @return Response
@@ -89,7 +91,7 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @param  string  $field
+     * @param string $field
      */
     public function setField(string $field): void
     {
@@ -106,7 +108,7 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * @param  string  $query
+     * @param string $query
      */
     public function setQuery(string $query): void
     {
@@ -115,18 +117,18 @@ class GetSearchAccountRequest extends Request
     }
 
     /**
-     * {@inheritdoc}
-     */
-    public function put(): Response
-    {
-        // TODO: Implement put() method.
-    }
-
-    /**
      * @return Response
      */
     public function post(): Response
     {
         // TODO: Implement post() method.
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function put(): Response
+    {
+        // TODO: Implement put() method.
     }
 }

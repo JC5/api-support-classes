@@ -29,21 +29,22 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Transaction
 {
-    public string $amount;
-    public string $currencyCode;
-    public int    $currencyDecimalPlaces;
-    public int    $currencyId;
-    public string $date;
-    public string $description;
-    public int    $id;
-    public string $type;
-    public array  $tags;
-    public string $destinationName;
-    public string $sourceName;
-    public string $categoryName;
-    public string $budgetName;
-    public int    $categoryId;
-    public int    $budgetId;
+    public string  $amount;
+    public string  $currencyCode;
+    public int     $currencyDecimalPlaces;
+    public int     $currencyId;
+    public string  $date;
+    public string  $description;
+    public int     $id;
+    public string  $type;
+    public array   $tags;
+    public string  $destinationName;
+    public string  $sourceName;
+    public string  $categoryName;
+    public string  $budgetName;
+    public int     $categoryId;
+    public int     $budgetId;
+    private string $notes = '';
 
     public int $sourceId;
     public int $destinationId;
@@ -51,18 +52,19 @@ class Transaction
     /**
      * Transaction constructor.
      *
-     * @param  array  $data
+     * @param array $data
      */
     public function __construct(array $data)
     {
         $this->id                    = (int)$data['transaction_journal_id'];
         $this->description           = $data['description'];
-        $this->destinationName       = (string) $data['destination_name'];
+        $this->destinationName       = (string)$data['destination_name'];
         $this->destinationId         = (int)$data['destination_id'];
         $this->sourceName            = $data['source_name'];
         $this->sourceId              = (int)$data['source_id'];
         $this->type                  = $data['type'];
         $this->date                  = $data['date'];
+        $this->notes                 = (string)$data['notes'];
         $this->amount                = $data['amount'];
         $this->currencyCode          = $data['currency_code'];
         $this->currencyId            = (int)$data['currency_id'];

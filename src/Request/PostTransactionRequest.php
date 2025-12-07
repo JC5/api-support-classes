@@ -48,6 +48,8 @@ class PostTransactionRequest extends Request
         $this->setUri('transactions');
     }
 
+    public function delete(): Response {}
+
     /**
      * @return Response
      */
