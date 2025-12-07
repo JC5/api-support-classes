@@ -40,7 +40,7 @@ class GetTransactionResponse extends Response
      */
     public function __construct(array $data)
     {
-        $this->group = TransactionGroup::fromArray($data);
+        $this->group = TransactionGroup::fromArray($data['data']);
     }
 
     /**
