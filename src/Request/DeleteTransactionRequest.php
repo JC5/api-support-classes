@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace GrumpyDictator\FFIIIApiSupport\Request;
 
+use GrumpyDictator\FFIIIApiSupport\Response\DeleteTransactionResponse;
 use GrumpyDictator\FFIIIApiSupport\Response\Response;
 
 /**
