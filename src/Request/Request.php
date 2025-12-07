@@ -344,7 +344,10 @@ abstract class Request
 
             return $json;
         }
-
+        if (204 === $res->getStatusCode() && 'DELETE' === $method) {
+            // this is OK.
+            return [];
+        }
         if (200 !== $res->getStatusCode()) {
             $this->responseBody = (string)$res->getBody();
             throw new ApiHttpException(sprintf('Status code is %d: %s', $res->getStatusCode(), (string)$res->getBody()));
