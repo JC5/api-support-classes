@@ -45,6 +45,6 @@ class DeleteTransactionRequest extends Request
 
     public function delete(): Response
     {
-        $this->authenticatedDelete();
+        return new DeleteTransactionResponse($this->authenticatedDelete());
     }
 }
