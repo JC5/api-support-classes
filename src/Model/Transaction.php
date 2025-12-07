@@ -44,7 +44,7 @@ class Transaction
     public string  $budgetName;
     public int     $categoryId;
     public int     $budgetId;
-    private string $notes = '';
+    public string $notes = '';
 
     public int $sourceId;
     public int $destinationId;
