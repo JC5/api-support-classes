@@ -35,6 +35,7 @@ class Account
     public int     $id;
     public ?string $name;
     public ?string $number;
+    public ?string $accountNumber;
     public ?string $type;
 
     public ?string $currentBalance;
@@ -48,15 +49,16 @@ class Account
     public static function fromArray(array $array): self
     {
         $account                     = new self;
-        $account->id                 = (int) $array['id'];
-        $account->name               = $array['attributes']['name'];
-        $account->type               = $array['attributes']['type'];
-        $account->iban               = $array['attributes']['iban'];
-        $account->currentBalance     = $array['attributes']['current_balance'];
-        $account->currentBalanceDate = $array['attributes']['current_balance_date'];
-        $account->number             = $array['attributes']['account_number'];
-        $account->bic                = $array['attributes']['bic'];
-        $account->currencyCode       = $array['attributes']['currency_code'];
+        $account->id                 = (int)$array['id'];
+        $account->name               = $array['attributes']['name'] ?? $array['name'];
+        $account->type               = $array['attributes']['type'] ?? $array['type'];
+        $account->iban               = $array['attributes']['iban'] ?? $array['iban'];
+        $account->number             = $array['attributes']['account_number'] ?? $array['account_number'];
+        $account->accountNumber      = $array['attributes']['account_number'] ?? $array['account_number'];
+        $account->bic                = $array['attributes']['bic'] ?? $array['bic'];
+        $account->currencyCode       = $array['attributes']['currency_code'] ?? $array['currency_code'];
+        $account->currentBalance     = $array['attributes']['current_balance'] ?? $array['current_balance'];
+        $account->currentBalanceDate = $array['attributes']['current_balance_date'] ?? $array['current_balance_date'];
 
         return $account;
     }
@@ -67,13 +69,16 @@ class Account
     public function toArray(): array
     {
         return [
-            'id'            => $this->id,
-            'name'          => $this->name,
-            'type'          => $this->type,
-            'iban'          => $this->iban,
-            'number'        => $this->number,
-            'bic'           => $this->bic,
-            'currency_code' => $this->currencyCode,
+            'id'                   => $this->id,
+            'name'                 => $this->name,
+            'type'                 => $this->type,
+            'iban'                 => $this->iban,
+            'number'               => $this->number,
+            'account_number'       => $this->accountNumber,
+            'bic'                  => $this->bic,
+            'currency_code'        => $this->currencyCode,
+            'current_balance'      => $this->currentBalance,
+            'current_balance_date' => $this->currentBalanceDate,
         ];
     }
 }
