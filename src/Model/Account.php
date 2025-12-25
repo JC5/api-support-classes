@@ -40,6 +40,7 @@ class Account
 
     public ?string $currentBalance;
     public ?string $currentBalanceDate;
+    public bool $match = false;
 
     /**
      * @param array $array
