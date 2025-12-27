@@ -29,22 +29,26 @@ namespace GrumpyDictator\FFIIIApiSupport\Model;
  */
 class Transaction
 {
-    public string  $amount;
-    public string  $currencyCode;
-    public int     $currencyDecimalPlaces;
-    public int     $currencyId;
-    public string  $date;
-    public string  $description;
-    public int     $id;
-    public string  $type;
-    public array   $tags;
-    public string  $destinationName;
-    public string  $sourceName;
-    public string  $categoryName;
-    public string  $budgetName;
-    public int     $categoryId;
-    public int     $budgetId;
-    public string $notes = '';
+    public string   $amount;
+    public string   $currencyCode;
+    public int      $currencyDecimalPlaces;
+    public int      $currencyId;
+    public string   $date;
+    public string   $description;
+    public int      $id;
+    public string   $type;
+    public array    $tags;
+    public string   $destinationName;
+    public string   $sourceName;
+    public string   $categoryName;
+    public string   $budgetName;
+    public int      $categoryId;
+    public int      $budgetId;
+    public string   $notes                        = '';
+    private ?int    $foreignCurrencyId            = null;
+    private ?string $foreignCurrencyCode          = null;
+    private ?int    $foreignCurrencyDecimalPlaces = null;
+    private ?string $foreignAmount                = null;
 
     public int $sourceId;
     public int $destinationId;
@@ -69,10 +73,17 @@ class Transaction
         $this->currencyCode          = $data['currency_code'];
         $this->currencyId            = (int)$data['currency_id'];
         $this->currencyDecimalPlaces = $data['currency_decimal_places'];
-        $this->tags                  = $data['tags'] ?? [];
-        $this->categoryName          = $data['category_name'] ?? '';
-        $this->budgetName            = $data['budget_name'] ?? '';
-        $this->categoryId            = (int)$data['category_id'];
-        $this->budgetId              = (int)$data['budget_id'];
+
+        // foreign amount info:
+        $this->foreignCurrencyId            = null === $data['foreign_currency_id'] ? null : (int)$data['foreign_currency_id'];
+        $this->foreignCurrencyCode          = $data['foreign_currency_code'];
+        $this->foreignCurrencyDecimalPlaces = null === $data['foreign_currency_decimal_places'] ? null : (int)$data['foreign_currency_decimal_places'];
+        $this->foreignAmount                = $data['foreign_amount'];
+
+        $this->tags         = $data['tags'] ?? [];
+        $this->categoryName = $data['category_name'] ?? '';
+        $this->budgetName   = $data['budget_name'] ?? '';
+        $this->categoryId   = (int)$data['category_id'];
+        $this->budgetId     = (int)$data['budget_id'];
     }
 }
