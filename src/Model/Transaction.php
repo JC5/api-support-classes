@@ -45,10 +45,10 @@ class Transaction
     public int      $categoryId;
     public int      $budgetId;
     public string   $notes                        = '';
-    private ?int    $foreignCurrencyId            = null;
-    private ?string $foreignCurrencyCode          = null;
-    private ?int    $foreignCurrencyDecimalPlaces = null;
-    private ?string $foreignAmount                = null;
+    public ?int    $foreignCurrencyId            = null;
+    public ?string $foreignCurrencyCode          = null;
+    public ?int    $foreignCurrencyDecimalPlaces = null;
+    public ?string $foreignAmount                = null;
 
     public int $sourceId;
     public int $destinationId;
