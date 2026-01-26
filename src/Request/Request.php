@@ -344,7 +344,7 @@ abstract class Request
 
             return $json;
         }
-        if (204 === $res->getStatusCode() && 'DELETE' === $method) {
+        if (204 === $res->getStatusCode() && ('DELETE' === $method || 'POST' === $method)) {
             // this is OK.
             return [];
         }
