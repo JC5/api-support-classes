@@ -25,9 +25,6 @@ class PostFinishBatchRequest extends Request
      */
     public function get(): Response {}
 
-    /**
-     * @return Response
-     */
     public function post(): Response
     {
         $parameters = $this->getParameters();
