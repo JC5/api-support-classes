@@ -22,6 +22,7 @@ body:
     attributes:
       label: Description
       description: Please provide a brief description of the bug in 1-2 sentences.
+      placeholder: Please DO NOT use AI / LLM to fill this form.
     validations:
       required: true
 
@@ -29,7 +30,7 @@ body:
     attributes:
       label: Debug information
       description: Please provide the table from the /debug page. Do not add backticks or quotes.
-      placeholder: The output from the /debug page
+      placeholder: Please DO NOT use AI / LLM to fill this form.
     validations:
       required: true
 
@@ -37,6 +38,7 @@ body:
     attributes:
       label: Expected behaviour
       description: Please describe precisely what you'd expect to happen. Be specific.
+      placeholder: Please DO NOT use AI / LLM to fill this form.
     validations:
       required: false
 
@@ -55,3 +57,4 @@ body:
     attributes:
       label: Additional info
       description: Please provide any additional information that seem useful.
+      placeholder: Please DO NOT use AI / LLM to fill this form.
